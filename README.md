@@ -1,1 +1,1 @@
-# BT-Passwords-Manager
+# BT-Password-Manager
