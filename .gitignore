@@ -1,0 +1,9 @@
+*.aux
+*.lof
+*.log
+*.lot
+*.mypyg
+*.out
+*.synctex.gz
+*.toc
+
