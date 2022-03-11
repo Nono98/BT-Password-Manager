@@ -50,17 +50,10 @@
     
     \normalsize
     \begin{tabular}{l@{\hskip 10mm}l}
-    	\textbf{Étudiant} & \textbf{\TBauthor} \\[0.1cm]
+    	\textbf{Étudiante} & \textbf{\TBauthor} \\[0.1cm]
 	    \textbf{Enseignant responsable} & \TBsupervisor \\[0.1cm]
 		  \ifthenelse{\isempty{\TBindustryName}}%
     		{}%empty
-		    {\textbf{Entreprise mandante} & 
-		      \begin{minipage}[t]{8cm}%
-		    		\TBindustryContact\\
-						\TBindustryName\\
-						\TBindustryAddress\\
-					\end{minipage} \\[0.1cm]
-				}%not empty
 		\textbf{Année académique} & \TBacademicYears \\[0.1cm]
     \end{tabular}
     
@@ -85,7 +78,7 @@
       \TBdpt\\
       \TBfiliere\\
       \TBorient\\
-      Étudiant : \TBauthor\\
+      Étudiante : \TBauthor\\
       Enseignant responsable : \TBsupervisor\\
   \end{flushright}
   
@@ -98,10 +91,7 @@
   
   \hrule
   \vspace{0.5cm}
-  
-  {Nom de l'entreprise/institution}
-
-  \TBindustryName
+ 
 
   \vspace{0.5cm}
   
@@ -118,10 +108,7 @@
       Enseignant responsable : & Date et lieu : & Signature :  \\[0.3cm]
   
       {\TBsupervisor} & .......................................... &  .......................................... \\[0.8cm]
-      Nom de l'entreprise/institution : & Date et lieu : & Signature :  \\[0.3cm]
-  
-      {\TBindustryContact} & .......................................... &  .......................................... \\
-      {\TBindustryName}
+     
   \end{tabular}
   
   \cleardoublepage
@@ -178,7 +165,7 @@
 
   \chapter{Authentification}
   
-Le soussigné, \TBauthor, atteste par la présente avoir réalisé  ce travail et n’avoir utilisé aucune autre source que celles expressément mentionnées.
+La soussignée, \TBauthor, atteste par la présente avoir réalisé ce travail et n’avoir utilisé aucune autre source que celles expressément mentionnées.
 
 \vspace{2cm}
 
