@@ -11,7 +11,7 @@ Ce chapitre vise à étudier les différentes fonctionnalités offertes par les 
 
 Nous allons également analyser les différents prix des applications ainsi que présenter où en est le marché actuel afin d'étudier la popularité de ces dernières.
 
-Pour l'étude de marché, les gestionnaires de mots de passe sélectionnés seront: \textit{LastPass}\footnote{\href{https://www.lastpass.com/}{https://www.lastpass.com/}}, \textit{Dashlane}\footnote{\href{https://www.dashlane.com/}{https://www.dashlane.com/}}, \textit{1Password}\footnote{\href{https://1password.com/}{https://1password.com/}}, \textit{Keepass}\footnote{\href{https://keepass.info/}{https://keepass.info/}}, \textit{Bitwarden}\footnote{\href{https://bitwarden.com/}{https://bitwarden.com/}}, \textit{Nordpass}\footnote{\href{https://nordpass.com/}{https://nordpass.com/}}, \textit{RoboForm}\footnote{\href{https://www.roboform.com/}{https://www.roboform.com/}}, \textit{Keeper}\footnote{\href{https://www.keepersecurity.com/}{https://www.keepersecurity.com/}}.
+Pour l'étude de marché, les gestionnaires de mots de passe sélectionnés seront: \textit{LastPass}\footnote{\href{https://www.lastpass.com/}{https://www.lastpass.com/}}, \textit{Dashlane}\footnote{\href{https://www.dashlane.com/}{https://www.dashlane.com/}}, \textit{1Password}\footnote{\href{https://1password.com/}{https://1password.com/}}, \textit{KeePass}\footnote{\href{https://keepass.info/}{https://keepass.info/}}, \textit{Bitwarden}\footnote{\href{https://bitwarden.com/}{https://bitwarden.com/}}, \textit{NordPass}\footnote{\href{https://nordpass.com/}{https://nordpass.com/}}, \textit{RoboForm}\footnote{\href{https://www.roboform.com/}{https://www.roboform.com/}}, \textit{Keeper}\footnote{\href{https://www.keepersecurity.com/}{https://www.keepersecurity.com/}}.
 
 Ils ont été sélectionnés en se basant sur leur popularité sur le marché ainsi qu'à la suite de lecture d'articles concernant les meilleurs gestionnaires de mots de passe \cite{BPM22}\cite{gallagher19}\cite{MSPM22}\cite{PM22}.
 \section{Fonctionnalités}
@@ -23,50 +23,101 @@ Ci-après, une liste des fonctionnalités disponibles dans les gestionnaires de 
 	\item Générateur de mots de passe forts
 	\item Surveillance de la fuite de données ou données compromises
 	\item Alerte en cas de données compromises
-	\item Synchronisation de données entre devices
+	\item Synchronisation de données entre devices (cloud)
 	\item Authentification à double facteurs
 	\item Self-hosting
 	\item Support prioritaire
 	\item Connexion à l'aide de facteurs biométriques (\textit{fingerprint} ou \textit{facial recognition}) ou d'un pin
+	\item Possibilité de stockage des secrets en local
 	
 \end{enumerate}
 Ci-dessous un tableau récapitulatif qui indique quels gestionnaires de mots de passe offre quelles fonctionnalités. 
-\begin{center}
-	\centering
-	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\begin{longtable}[h]{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 		\hline
-		Application & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11  \\
+		Application & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
 		\hline
-		LastPass & $\times$ & $\times$ & $\times$! & $\times$* & $\times$* &  $\times$*& $\times$ & $\times$ & & $\times$* & $\times$* \\
+		LastPass & $\times$ & $\times$ & $\times$! & $\times$* & $\times$* &  $\times$*& $\times$ & $\times$ & & $\times$* & $\times$* & $\times$ \\
 				\hline
-		Dashlane\footnotemark & $\times$* & $\times$ & $\times$! & $\times$ & $\times$* & $\times$ & $\times$* & $\times$! & & & \\
+		Dashlane & $\times$* & $\times$ & $\times$! & $\times$ & $\times$* & $\times$ & $\times$* & $\times$! & & & & $\times$ \\
 				\hline
-		1Password & $\times$* & $\times$* & $\times$* & $\times$* & & $\times$* & $\times$* & $\times$* & & $\times$* & \\
+		1Password\footnote{L'application est totalement payante et différents abonnements sont proposés \label{1p} & $\times$* & $\times$* & $\times$* & $\times$* & & $\times$* & $\times$* & $\times$* & & $\times$* & & $\times$* \\
 				\hline
-		Keepass \footnotemark & $\times$ & $\times$ &  & $\times$ & $\times$ & & & $\times$ & $\times$ & & $\times$ \\
+		KeePass \footnote{En général, nécessite l'installation de plugins supplémentaires afin de profiter de toutes les fonctionnalités} & $\times$ & $\times$ &  & $\times$ & $\times$ & & & $\times$ & $\times$ & & $\times$ & $\times$\\
 				\hline
-		Bitwarden &  & $\times$  & $\times$! & $\times$ & $\times$* & $\times$* & $\times$ & $\times$! & $\times$* &  $\times$* & $\times$! \\
+		Bitwarden &  & $\times$  & $\times$! & $\times$ & $\times$* & $\times$* & $\times$ & $\times$! & $\times$* &  $\times$* & $\times$!& $\times$ \\
 				\hline
-		Nordpass & $\times$ & $\times$ & $\times$*  & $\times$ & $\times$* & & $\times$ & $\times$ & $\times$* & $\times$* & $\times$ \\
+		NordPass & $\times$ & $\times$ & $\times$*  & $\times$ & $\times$* & & $\times$ & $\times$ & $\times$* & $\times$* & $\times$ & $\times$\\
 				\hline
-		RoboForm & $\times$ & $\times$ & $\times$* & $\times$ & & $\times$ & $\times$* & $\times$* & $\times$* & $\times$* & \\
+		RoboForm & $\times$ & $\times$ & $\times$* & $\times$ & & $\times$ & $\times$* & $\times$* & $\times$* & $\times$* & & $\times$\\
 				\hline
-		Keeper\footnotemark & $\times$* & $\times$\footnotemark & $\times$* & $\times$* &$\times$* & $\times$* & $\times$* &$\times$* &$\times$* & $\times$* & $\times$* \\
+		Keeper\footnote{Se référer à la note de bas de page \ref{1p}} & $\times$* & $\times$*\footnote{Extension \textit{KeeperFill}} & $\times$* & $\times$* &$\times$* & $\times$* & $\times$* &$\times$* &$\times$* & $\times$* & $\times$* &  $\times$* \\
 		\hline
-	\end{tabular}
-\addtocounter{footnote}{-4} 
-\stepcounter{footnote}\footnotetext{L'application est totalement payante et différents abonnements à prix différents sont proposés \label{dash}}
-\stepcounter{footnote}\footnotetext{En général, nécessite l'installation de plugins supplémentaires  afin de profiter de toutes les fonctionnalités}
-\stepcounter{footnote}\footnotetext{Se référer à la note de bas de page \ref{dash}}
-\stepcounter{footnote}\footnotetext{Extension \textit{KeeperFill}}
-\end{center}
+ \caption{Fonctionnalités proposées par les candidats}
+\end{longtable} 
 $\times$ : L'application propose cette fonctionnalités \\
 \textbf{*}\hspace{0.1cm} : Fonctionnalité proposée mais avec un version premium (payante) \\
 \textbf{!}\hspace{0.18cm} : Limitations avec une version gratuite \\
-\rule{\linewidth}{.5pt}
+
 Sur tous les candidats sélectionnés, nous remarquons que la plupart offre la majorité des fonctionnalités énumérées plus haut. Nous constatons que l'offre des constructeurs de gestionnaires de mots de passe est assez variée et répond à la demande des particuliers et des entreprises.
- 
 \section{Plateformes}
+Cette partie va permettre de visualiser sur quelles plateformes les gestionnaires de mots de passe sélectionnés sont supportés. \\
+\begin{longtable}[h]{|c|c|c|c|c|c|c|}
+	\hline
+	Application & Windows & MacOS & Linux & Android & iOS & Navigateur  \\
+	\hline
+	LastPass & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ &  $\times$\\
+	\hline
+	Dashlane & $\times$ & $\times$ & $\times$! & $\times$ & $\times$ & $\times$  \\
+	\hline
+	1Password & $\times$ & $\times$ & $\times$ & $\times$ & $\times$& \\
+	\hline
+	KeePass & $\times$ & $\times$* & $\times$*  & $\times$* & $\times$* &  $\times$*  \\
+	\hline
+	Bitwarden & $\times$ & $\times$  & $\times$ & $\times$ & $\times$ & $\times$  \\
+	\hline
+	NordPass & $\times$ & $\times$ & $\times$  & $\times$ & $\times$ &  \\
+	\hline
+	RoboForm & $\times$ & $\times$ & $\times$! & $\times$ & & $\times$ \\
+	\hline
+	Keeper & $\times$ & $\times$ & $\times$ & $\times$ &$\times$ & $\times$ \\
+	\hline
+  \caption{Plateformes supportées par les différentes applications}
+\end{longtable}
+$\times$ : L'application est supportée sur ces plateformes \\
+\textbf{*}\hspace{0.1cm} :  Des applications (ou des paquets) compatibles avec KeePass Password Safe non-officielles mais contribuées existent \\
+\textbf{!}\hspace{0.18cm} : Utilisation via des extensions de navigateur \\
+
+Même si un gestionnaire supporte toutes les plateformes indiquées, il est nécessaire d'aller vérifier les conditions d'utilisation du système, c'est-à-dire les versions des plateformes afin de s'assurer que l'application fonctionnera quand même. 
+
+Cependant, nous constatons que la majorité des applications sont disponibles sur les plateformes les plus courantes, et même si elles ne le sont pas, il y a souvent une solution non-officielle (notamment pour KeePass) ou via le navigateur qui existe.
 \section{Prix}
+Nous allons passer brièvement en revue les prix proposés par les gestionnaires de mots de passe. Chaque application propose leurs propres gammes de prix avec également des abonnements possibles pour les particuliers, familles ou entreprises. 
+\subsection{Particuliers}
+Pour la plupart des applications, nous pouvons retrouver 3 gammes de prix; Gratuit, Premium, Famille. L'offre familiale va être plus cher car les gestionnaires de mots de passe sont conçus pour pouvoir avoir plusieurs gestionnaires chiffrés individuels différents. 
+Les tarifs ci-dessous sont exprimés en mensualités. \\
+\begin{longtable}[h]{|c|c|c|c|c|}
+    \hline
+	Application & Gratuit & Premium & Famille & Autre ? \\
+	\hline
+	LastPass & \$0 & \$3 & \$4 & non \\
+	\hline
+	Dashlane & \$0 & \$3.99 & \$5.99 &  non \\
+	\hline
+	1Password & non & \$2.99 & \$4.99 & non \\
+	\hline
+	KeePass & non & non & non & gratuit / open-source  \\
+	\hline
+	Bitwarden & \$0 & <\$1 & \$3.33 &  \\
+	\hline
+	NordPass & \$0 & \$1.84 & \$4.99 &  \\
+	\hline
+	RoboForm & \$0 & \$1.99 & \$3.99 &   \\
+	\hline
+	Keeper & non & \$2.92 & \$6.25 &   \\
+	\hline
+    \caption{2.3 Tarifs pour particuliers}
+\end{longtable}
+\subsection{Entreprises}
 \section{Marché actuel}
 prix sur le marché, popularité, lier l'augmentation des cyberattaques avec le covid-19 + peur de perdre ses données
+\section{Récapitualtif de l'étude}
