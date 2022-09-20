@@ -16,7 +16,8 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
-
+\usepackage{tablefootnote}
+\usepackage{hyperref}
 \newif\ifisconfidential	\isconfidentialfalse
 
 \newif\ifisdraft\isdraftfalse
@@ -30,7 +31,7 @@
 \newcommand{\TBtitle}{Gestionnaires de mots de passe : quelle sécurité ? }
 \newcommand{\TBsubtitle}{}%laisser vide si pas de sous-titre
 \newcommand{\TByear}{2022}
-\newcommand{\TBacademicYears}{2021-2022}
+\newcommand{\TBacademicYears}{2022-2023}
 
 \newcommand{\TBdpt}{Département des Technologie de l'information et de la communication (TIC)}
 \newcommand{\TBfiliere}{Filière Télécommunications}
@@ -100,13 +101,11 @@ Dans ce travail... Ceci est le résumé publiable...
 
 \input{chapters/introduction}
 
-\input{chapters/etat-de-lart}
+\input{chapters/etude_marche}
 
-\input{chapters/ch_exemple}
+\input{chapters/etude_securitaire}
 
-\input{chapters/architecture}
-
-\input{chapters/implementation}
+\input{chapters/selection}
 
 \input{chapters/conclusion}
 

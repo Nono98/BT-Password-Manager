@@ -1,9 +1,43 @@
 % +---------------------------------------------------------------+
-% | Author :    Sylvain Pasini, HEIG-VD
-% | Date :       June 3rd, 2021
+% | Author :    Noémie Plancherel, HEIG-VD
+% | Date :      18.04.2022
 % +---------------------------------------------------------------+
 
 
 \chapter{Introduction}
 \label{ch:intro}
 
+Pour un utilisateur lambda, il peut être difficile de se souvenir de tous ses mots de passe tout en s'assurant d'en utiliser un différent pour chaque service afin d'éviter tout vol de données. Typiquement dans ces situations, nous allons naturellement utiliser des mots de passe simples, qui sont facilement mémorisables. Comme, par exemple, utiliser son prénom et sa date de naissance, "123456" ou encore "qwerty". De plus, il est plus simple d'utiliser le même mot de passe pour chacun de ses comptes, afin d'en mémoriser uniquement un seul. 
+
+Cependant, même si l'unique mot de passe qu'on utilise est fort et aléatoire, il n'est pas garanti à 100\% qu'on soit la cible d'aucun attaquant et si une attaque est réalisée, toutes nos données personnelles sont exposées.
+
+Ainsi, dans ce genre de cas, les gestionnaires de mots de passe interviennent et peuvent faciliter le quotidien de la plupart des utilisateurs. 
+
+\section{Fonctionnement général}
+
+Les gestionnaires de mots de passe sont des applications multi-plateformes qui vont permettre de stocker des informations sensibles telles que des mots de passe, numéros de carte de crédit ou encore des fichiers confidentiels. On peut les comparer à des coffres forts.  
+
+Ces derniers proposent un \textit{master password} ou une \textit{master key} qui va permettre d'accéder à l'ensemble des données secrètes. En conséquence, la sécurité repose sur un seul mot de passe principal, ce qui est très bénéfique pour les utilisateurs car ils n'ont qu'un mot de passe à retenir. Une fois l'accès à l'application, l'utilisateur a la possibilité de stocker des données, générer des mots de passe ainsi que se connecter à des services en ligne (remplissage de formulaire d'identification automatique).
+
+Les gestionnaires de mots de passe sont disponibles en plusieurs types différents en fonction du besoin de l'utilisateur et des fonctionnalités proposées. 
+
+\section{Types}
+
+\subsection{Cloud}
+Les gestionnaires de mots de passe dans le cloud sont proposés pour un usage personnel ainsi qu'un usage professionnel. Les mots de passe entrés dans le coffre fort vont directement être stockés sur les serveurs du constructeur et ils seront également chiffrés sur ces derniers. Aucun stockage n'est effectué en local.
+
+Le cloud va permettre aux utilisateurs d'avoir accès à leurs données sur n'importe quel device (ordinateur, mobile, montre) et à tout moment. De plus, toutes les données vont être synchronisées sur tous les devices connectés.
+
+À propos de la sécurité, elle repose entièrement sur le provider de l'application car toutes les informations sont stockées sur leurs propres serveurs.
+
+\subsection{Local}
+Les applications en local s'installent sur le desktop ou sur le mobile de l'utilisateur. Ces gestionnaires de mots de passe fonctionnent indépendamment et sont offline. Ces produits en peuvent donc être utilisés sur une seule machine, par conséquence synchronisation  n'est pas proposée pour ce type de password manager. 
+
+Toutes les données sensibles sont directement stockées et chiffrées sur le device. La sécurité est plutôt bonne comparé à la solution cloud car c'est du offline, cependant si on récupère / vole le device, la sécurité devient plus faible car il y aurait la possibilité d'avoir accès aux informations sensibles du gestionnaire de mots de passe. 
+
+Il y a également une solution \textit{on-premise} (ou \textit{self-host}) qui permet d'utiliser sa propre infrastructure locale pour héberger toutes les données du gestionnaire de mots de passe. Les fonctionnalités offertes sont les mêmes que pour les solutions cloud mais le prix est en général plus cher et l'application plus orientée professionnelle.
+
+\subsection{Extension de navigateur}
+Le dernier type de gestionnaire de mots de passe sont les extensions de navigateur. Elles vont faciliter la gestion et la sauvegarde de mots de passe de comptes de sites web. Il y a également la possibilité de synchroniser toutes les données stockées entre tous les devices qui supportent le navigateur en question (Chrome, Firefox, Safari, etc.).
+
+Toutes les informations sont stockées et chiffrées sur les serveurs du vendeur. En terme de sécurité, en cas de vol ou dégât du device, le risque de perdre les données est minime, cependant étant donné que les mots de passe sont stockés sur des serveurs externes, il faut leur faire confiance.

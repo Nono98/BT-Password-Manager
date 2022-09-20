@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: tb_report.aux
+The style file: plain.bst
+Database file #1: chapters/biblio.bib
+Warning--entry type for "PM22" isn't style-file defined
+--line 15 of file chapters/biblio.bib
+Warning--entry type for "BPM22" isn't style-file defined
+--line 23 of file chapters/biblio.bib
+Warning--entry type for "MSPM22" isn't style-file defined
+--line 31 of file chapters/biblio.bib
+You've used 5 entries,
+            2118 wiz_defined-function locations,
+            523 strings with 4486 characters,
+and the built_in function-call counts, 1303 in all, are:
+= -- 115
+> -- 62
+< -- 0
++ -- 25
+- -- 20
+* -- 71
+:= -- 224
+add.period$ -- 12
+call.type$ -- 5
+change.case$ -- 24
+chr.to.int$ -- 0
+cite$ -- 5
+duplicate$ -- 44
+empty$ -- 118
+format.name$ -- 20
+if$ -- 273
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 3
+newline$ -- 25
+num.names$ -- 10
+pop$ -- 42
+preamble$ -- 1
+purify$ -- 20
+quote$ -- 0
+skip$ -- 37
+stack$ -- 0
+substring$ -- 55
+swap$ -- 5
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 18
+warning$ -- 0
+while$ -- 11
+width$ -- 6
+write$ -- 47
+(There were 3 warnings)

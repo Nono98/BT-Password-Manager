@@ -1,6 +1,6 @@
 % +---------------------------------------------------------------+
 % | Author :    Noémie Plancherel, HEIG-VD
-% | Date :      April 1st, 2022
+% | Date :      April 8th, 2022
 % +---------------------------------------------------------------+
 
 
@@ -9,18 +9,18 @@
 
 
 \section*{Résumé du problème}
-De nos jours, les gestionnaires de mots de passe sont des outils très fréquemment utilisés. En effet, une bonne pratique est d'utiliser un mot de passe par service. De cette manière, si un service est compromis et le mot de passe divulgué, cela n'implique pas les autres. Il est également très important de choisir un mot de passe fort qui ne contient pas d'éléments facilement prévisibles et qui pourrait être brute-forcé rapidement. 
+De nos jours, les gestionnaires de mots de passe sont des outils très fréquemment utilisés. En effet, une bonne pratique est d'utiliser un mot de passe par service. De cette manière, si un service est compromis et le mot de passe divulgué, cela n'impacte pas les autres services. Il est également très important de choisir un mot de passe fort qui ne contient pas d'éléments facilement prévisibles et qui pourrait être brute-forcé rapidement. 
 
 Les gestionnaires de mots de passe permettent principalement de faciliter le stockage des mots de passe qui demandent d'être de plus en plus longs et complexes, de manière à ne pas les réutiliser. Ils permettent également d'ajouter une couche sécuritaire aux mots de passe en les stockant de manière sécurisée et en offrant la possibilité de générer des mots de passe forts.
 
-Ces applications offrent plusieurs fonctionnalités sous la forme de différents types;  elles permettent, entre autres, l'utilisation du cloud afin de stocker les mots de passe sur les serveurs du fournisseur pour faciliter la synchronisation des données entre plusieurs devices (mobile, montre, navigateur, etc.). Certains gestionnaires de mots de passe sont également fréquemment utilisés au sein d'entreprises pour permettre le partage de données. Les entreprises vont généralement utiliser une solution self-hosted où ils auront leur propre infrastructure et stockage. Il existe des extensions de navigateur  qui proposent le remplissage automatique de mots de passe dans les formulaires de connexion. Enfin, il y a également des applications en local qui vont limiter leur utilisation à un seul appareil.
+Ces applications offrent plusieurs fonctionnalités sous la forme de différents types;  elles permettent, entre autres, l'utilisation du cloud afin de stocker les mots de passe sur les serveurs du fournisseur pour faciliter la synchronisation des données entre plusieurs devices (mobile, montre, navigateur, etc.). Certains gestionnaires de mots de passe sont également fréquemment utilisés au sein d'entreprises pour permettre le partage de données. Les entreprises vont généralement utiliser une solution self-hosted où elles auront leur propre infrastructure et stockage. Il existe des extensions de navigateur  qui proposent le remplissage automatique de mots de passe dans les formulaires de connexion. Enfin, il y a également des applications en local qui vont limiter leur utilisation à un seul appareil.
 
 Étant donné que les utilisateurs se reposent grandement sur les gestionnaires de mots de passe, il est important de s'assurer que ces logiciels satisfassent un certain nombre de principes de sécurité ainsi qu'une implémentation robuste afin d'éviter tout vol ou perte de données. 
 
 \section*{Objectifs}
-Ce travail de bachelor vise à comprendre les menaces d'un gestionnaire de mots de passe, premièrement de manière générique, puis sur des produits spécifiques, sélectionnés à la suite d'une étude complète, en analysant la sécurité sous différents angles (stockage, mémoire, réseau, cryptographie, etc.). 
+Ce travail de Bachelor vise à comprendre les menaces d'un gestionnaire de mots de passe, premièrement de manière générique, puis sur des produits spécifiques, sélectionnés à la suite d'une étude complète, en analysant la sécurité sous différents angles (stockage, mémoire, réseau, cryptographie, etc.). 
 
-Il est réalisé en deux parties distinctes; une première partie qui est une étude approfondie et complète sur les gestionnaires de mots de passe. Elle permet d'analyser les menaces des différents type de gestionnaires de mots de passe et de présenter les exigences sécuritaires qu'il serait nécessaire de garantir. Elle va également se concentrer sur une étude de marché avec une comparaison de plusieurs gestionnaires de mots de passe existants sous différents aspects.
+Le travail est réalisé en deux parties distinctes; une première partie qui est une étude approfondie et complète sur les gestionnaires de mots de passe. Elle permet d'analyser les menaces des différents type de gestionnaires de mots de passe et de présenter les exigences sécuritaires qu'il serait nécessaire de garantir. Elle va également se concentrer sur une étude de marché avec une comparaison de plusieurs gestionnaires de mots de passe existants sous différents aspects.
 
 La deuxième partie du travail se concentrera tout d'abord sur la sélection de quelques candidats (environ 4) en fonction de critères établis au préalable. Ensuite, le but est d'évaluer la sécurité de manière complète de chaque gestionnaire de mot de passe sélectionné; chaque élément choisi est analysé et évalué en fonction de différents critères comme les choix cryptographiques utilisés, le stockage, ou encore l'architecture de l'application.
 
@@ -41,29 +41,33 @@ Les délivrables seront les suivants :
 	\item Une analyse de menaces de différents types de gestionnaires de mots de passe
 	\item Spécification des exigences sécuritaires à garantir
 	\end{itemize}
-\item Analyse sécuritaire des quelques candidats représentatifs (environ 4) :
-	\begin{itemize}
-	\item Sélection de candidats pour la suite du travail
-	\end{itemize}
-chaque analyse se décomposera ainsi :
-	\begin{itemize}
-		\item Sélection de critères d'analyse
-		\item Analyse complète de chaque aspect
-		\item Rapport des faiblesses trouvées au fabricant
-	\end{itemize}
-\item Synthèse des résultats
+	\begin{enumerate}
+	\item Analyse sécuritaire des quelques candidats représentatifs (environ 4) :
+		\begin{itemize}
+		\item Sélection de candidats pour la suite du travail
+		\end{itemize}
+	chaque analyse se décomposera ainsi :
+		\begin{itemize}
+			\item Sélection de critères d'analyse
+			\item Analyse complète de chaque aspect
+			\item Rapport des faiblesses trouvées au fabricant
+		\end{itemize}
+	\item Synthèse des résultats
+	\end{enumerate}
 \item Comparaison entre chaque candidat
 \end{enumerate}
 
 \subsection*{Déroulement}
-En se référant aux dates officielles émises par la HEIG-VD, le travail de bachelor débute le 21 février 2022 et se termine au plus tard le 16 septembre 2022. Il y a 3 dates clés incluant des rendus:
+En se référant aux dates validées par M.Donini, le travail de Bachelor débute le 20 septembre 2022 et se termine au plus tard le 10 février 2023. Il y a 3 dates clés incluant des rendus:
 \begin{itemize}
-	\item \textbf{16 mai 2022} - rendu du rapport intermédiaire
-	\item \textbf{29 juillet 2022} - rendu du rapport final
-	\item \textbf{22 août au 16 septembre 2022} - soutenance du travail de bachelor
+	\item \textbf{14 octobre 2022} - rendu du rapport intermédiaire
+	\item \textbf{14 décembre 2022} - rendu du rapport final
+	\item \textbf{23 janvier au 10 février 2023} - soutenance du travail de bachelor
 \end{itemize}
 
 Etant donné, que la soutenance du travail implique l'intervention d'un expert, la date doit être définie entre tous les intervenants.
 
-Le volume du travail de bachelor est de 15 crédit ECTS, soit 450 heures. Le rapport intermédiaire représente 150 heures de travail. Au niveau de la répartition de la charge de travail, cela représente ~13h/semaine jusqu'au 19 juin, puis 45h/semaine jusqu'au rendu, soit le 29 juillet. 
+Le volume du travail de bachelor est de 15 crédit ECTS, soit 450 heures. Le rapport intermédiaire représente 150 heures de travail. 
+
+Au niveau de la répartition de la charge de travail, cela représente environ 45h/semaine jusqu'au rendu, soit le 14 décembre, car le travail se fait à 100\%. 
 
