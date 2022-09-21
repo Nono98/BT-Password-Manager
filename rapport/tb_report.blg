@@ -4,50 +4,58 @@ The top-level auxiliary file: tb_report.aux
 The style file: plain.bst
 Database file #1: chapters/biblio.bib
 Warning--entry type for "PM22" isn't style-file defined
---line 15 of file chapters/biblio.bib
+--line 2 of file chapters/biblio.bib
 Warning--entry type for "BPM22" isn't style-file defined
---line 23 of file chapters/biblio.bib
+--line 10 of file chapters/biblio.bib
 Warning--entry type for "MSPM22" isn't style-file defined
---line 31 of file chapters/biblio.bib
-You've used 5 entries,
+--line 18 of file chapters/biblio.bib
+Warning--entry type for "PMC" isn't style-file defined
+--line 35 of file chapters/biblio.bib
+Warning--entry type for "PM21" isn't style-file defined
+--line 43 of file chapters/biblio.bib
+Warning--entry type for "bitwardenreport" isn't style-file defined
+--line 51 of file chapters/biblio.bib
+Warning--entry type for "dbir" isn't style-file defined
+--line 59 of file chapters/biblio.bib
+You've used 8 entries,
             2118 wiz_defined-function locations,
-            523 strings with 4486 characters,
-and the built_in function-call counts, 1303 in all, are:
-= -- 115
-> -- 62
+            533 strings with 4601 characters,
+and the built_in function-call counts, 1778 in all, are:
+= -- 157
+> -- 67
 < -- 0
-+ -- 25
++ -- 28
 - -- 20
-* -- 71
-:= -- 224
-add.period$ -- 12
-call.type$ -- 5
-change.case$ -- 24
+* -- 74
+:= -- 296
+add.period$ -- 17
+call.type$ -- 8
+change.case$ -- 34
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 44
-empty$ -- 118
+cite$ -- 8
+duplicate$ -- 60
+empty$ -- 184
 format.name$ -- 20
-if$ -- 273
+if$ -- 382
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 3
-newline$ -- 25
-num.names$ -- 10
-pop$ -- 42
+int.to.str$ -- 8
+missing$ -- 1
+newline$ -- 36
+num.names$ -- 16
+pop$ -- 67
 preamble$ -- 1
-purify$ -- 20
+purify$ -- 26
 quote$ -- 0
-skip$ -- 37
+skip$ -- 63
 stack$ -- 0
-substring$ -- 55
-swap$ -- 5
+substring$ -- 70
+swap$ -- 8
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 18
+type$ -- 32
 warning$ -- 0
-while$ -- 11
-width$ -- 6
-write$ -- 47
-(There were 3 warnings)
+while$ -- 17
+width$ -- 9
+write$ -- 69
+(There were 7 warnings)

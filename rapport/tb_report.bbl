@@ -1,10 +1,8 @@
 \begin{thebibliography}{1}
 
-\bibitem{pasini2015}
-Gildas Avoine, Pascal Junod, Philippe Oechslin, and Sylvain Pasini.
-\newblock {\em {S{\'e}curit{\'e} informatique, cours et exercices
-  corrig{\'e}s}}.
-\newblock {Vuibert}, 2015.
+\bibitem{bitwardenreport}
+bitwarden.
+\newblock World password day global survey full report, 2022.
 
 \bibitem{BPM22}
 Clifford Colby, Rae Hodge, and Attila Tomaschek.
@@ -22,5 +20,18 @@ Michael Kurko.
 \bibitem{MSPM22}
 Paulius Masiliauskas.
 \newblock Most secure password managers in 2022, 2022.
+
+\bibitem{PMC}
+PasswordManager.
+\newblock Password manager trust survey, 2020.
+
+\bibitem{PM21}
+Security.org Team.
+\newblock Password manager and vault 2021 annual report: Usage, awareness, and
+  market size, 2021.
+
+\bibitem{dbir}
+Verizon.
+\newblock 2022 data breach investigations report, 2022.
 
 \end{thebibliography}
