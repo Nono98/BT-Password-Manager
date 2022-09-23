@@ -8,19 +8,34 @@
 
 Ce chapitre est dédié à toute l'analyse sécuritaire des gestionnaires de mots de passes en général. Nous allons dans un premier temps décrire comment ces applications sont sécurisées, puis justifier l'importance d'une forte sécurité suite à l'augmentation de la demande des entreprises et des particuliers.
 
-Dans un second temps, nous allons lister et analyser toutes les menaces existantes et / ou potentielles des \textit{password manager} en mettant en avant les failles actuellement connues des constructeurs et les conséquences de ces dernières ou de faiblesses qui pourraient survenir à tout moment (par exemple des cyberattaques).
+Dans un second temps, nous allons identifier et analyser toutes les menaces existantes et / ou potentielles des \textit{password manager} en mettant en avant les failles actuellement connues des constructeurs et les conséquences de ces dernières ou des faiblesses qui pourraient survenir à tout moment (par exemple des cyberattaques).
 
 Finalement, nous allons rédiger toutes les exigences sécuritaires que doivent respecter les gestionnaires de mots de passe afin que ces dernières garantissent une utilisation sûre qui évite des pertes ou vol de données.
 
-\section{Sécurité dans les gestionnaires de mots de passe}
+\section{Implémentation de la sécurité dans les gestionnaires de mots de passe}
 
-Dans cette section, afin de se baser sur des gestionnaires de mots de passe déjà existants et de pouvoir comparer les différentes sécurités implémentées, nous allons reprendre les 8 candidats sélectionnés dans la partie \hyperref[ch:etude_marche]{\textit{étude de marché}}, c'est-à-dire; \textit{LastPass}, \textit{Dashlane}, \textit{1Password}, \textit{KeePass}, \textit{Bitwarden}, \textit{NordPass}, \textit{RoboForm} et \textit{Keeper}.
-\subsection{Fonctionnement de la sécurité}
-- différents algorithmes utilisés
+Dans cette section, afin de se baser sur des gestionnaires de mots de passe déjà existants et de pouvoir comparer les différentes sécurités implémentées, nous allons reprendre les 8 candidats sélectionnés dans la partie \hyperref[ch:etude_marche]{\textit{étude de marché}}, c'est-à-dire; \textit{LastPass}, \textit{Dashlane}, \textit{1Password}, \textit{KeePass}, \textit{Bitwarden}, \textit{NordPass}, \textit{RoboForm} et \textit{Keeper}. Toutes les informations citées sont basées sur les \textit{security whitepapers} des constructeurs\cite{lastpasssecurity}\cite{dashlanesecurity}\cite{1passwordsecurity}\cite{keepasssecurity}\cite{bitwardensecurity}.
+
+Les gestionnaires de mots de passe sélectionnés fonctionnent tous de la même manière, au final cette méthode est plutôt classique dans les architectures des applications. Un \textit{master password} (qui est seulement connue par l'utilisateur) est généré ou entré par l'utilisateur et va permettre le déverrouillage de l'application et le chiffrement / déchiffrement de toutes les données stockées. 
+
+L'authentification unique (\textit{Single Sign-On} ou \textit{SSO}) permet de faciliter l'utilisateur car il doit mémoriser uniquement son \textit{master password} 
+
 - utilisation de la mémoire et stockage des secrets
-- 3 différents états d'un gestionnaire de mot de passe
+\subsection{3 états du gestionnaire de mot de passe}
+
+\subsubsection{Etat \textit{Not Running}}
+\subsubsection{Etat \textit{Unlocked State}}
+en expliquant chaque état et pour l'état unlock expliquer comment est géré le master password, avec des schemas
+\subsubsection{Etat \textit{Locked State}}
+
++ facteurs biométriques !
+\subsection{Algorithmes cryptographiques}
+- les algos utilisés pour le chiffrement et auth des données 
 \subsection{L'importance d'une forte sécurité}
+\colorbox{pink}{\parbox{15cm}{à voir si utile}}
 \section{Analyse des menaces}
 \subsection{Failles connues des constructeurs}
+\colorbox{pink}{\parbox{15cm}{à voir si je devrais pas les ajouter dans le chapitre de l'analyse de chaque gestionnaire sélectionné}}
 \subsection{Conséquences d'une quelconque faiblesse}
+\colorbox{pink}{\parbox{15cm}{à voir si utile, mais les conséquences seront sûrement soulignées lorsque je ferai l'analyse de menaces de toute manière}}
 \section{Exigences sécuritaires à respecter}

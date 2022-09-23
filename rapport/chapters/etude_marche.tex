@@ -29,36 +29,41 @@ Ci-après, une liste des fonctionnalités disponibles dans les gestionnaires de 
 \item Support prioritaire
 \item Connexion à l'aide de facteurs biométriques (\textit{fingerprint} ou \textit{facial recognition}) ou d'un pin
 \item Possibilité de stockage des secrets en local
+\item \textit{Backup \& Restore}, possibilité de récupérer une ancienne sauvegarde
 
 \end{enumerate}
 Ci-dessous un tableau récapitulatif qui indique quels gestionnaires de mots de passe offre quelles fonctionnalités. 
-\begin{longtable}[h]{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\begin{longtable}[h]{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 	\hline
-	Application & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+	Application & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 \\
 	\hline
-	LastPass & $\times$ & $\times$ & $\times$! & $\times$* & $\times$* &  $\times$*& $\times$ & $\times$ & & $\times$* & $\times$* & $\times$ \\
+	LastPass & $\times$ & $\times$ & $\times$! & $\times$* & $\times$* &  $\times$*& $\times$ & $\times$ & & $\times$* & $\times$* & $\times$ & \\
 		\hline
-	Dashlane & $\times$* & $\times$ & $\times$! & $\times$ & $\times$* & $\times$ & $\times$* & $\times$! & & & & $\times$ \\
+	Dashlane & $\times$* & $\times$ & $\times$! & $\times$ & $\times$* & $\times$ & $\times$* & $\times$! & & & & $\times$ & $\times$ \\
 		\hline
-	1Password\footnote{L'application est totalement payante et différents abonnements sont proposés \label{1p}} & $\times$* & $\times$* & $\times$* & $\times$* & & $\times$* & $\times$* & $\times$* & & $\times$* & & $\times$* \\
+	1Password\footnote{L'application est totalement payante et différents abonnements sont proposés \label{1p}} & $\times$* & $\times$* & $\times$* & $\times$* & & $\times$* & $\times$* & $\times$* & & $\times$* & & $\times$* & $\times$ \\
 			\hline
-	KeePass \footnote{En général, nécessite l'installation de plugins supplémentaires afin de profiter de toutes les fonctionnalités} & $\times$ & $\times$ &  & $\times$ & $\times$ & & & $\times$ & $\times$ & & $\times$ & $\times$\\
+	KeePass \footnote{En général, nécessite l'installation de plugins supplémentaires afin de profiter de toutes les fonctionnalités} & $\times$ & $\times$ &  & $\times$ & $\times$ & & & $\times$ & $\times$ & & $\times$ & $\times$ & $\times$ \\
 		\hline
-	Bitwarden &  & $\times$  & $\times$! & $\times$ & $\times$* & $\times$* & $\times$ & $\times$! & $\times$* &  $\times$* & $\times$!& $\times$ \\
+	Bitwarden &  & $\times$  & $\times$! & $\times$ & $\times$* & $\times$* & $\times$ & $\times$! & $\times$* &  $\times$* & $\times$!& $\times$ & $\times$\\
 	\hline
-	NordPass & $\times$ & $\times$ & $\times$*  & $\times$ & $\times$* & & $\times$ & $\times$ & $\times$* & $\times$* & $\times$ & $\times$\\
+	NordPass & $\times$ & $\times$ & $\times$*  & $\times$ & $\times$* & & $\times$ & $\times$ & $\times$* & $\times$* & $\times$ & $\times$ & \\
 	\hline
-	RoboForm & $\times$ & $\times$ & $\times$* & $\times$ & & $\times$ & $\times$* & $\times$* & $\times$* & $\times$* & & $\times$\\
+	RoboForm & $\times$ & $\times$ & $\times$* & $\times$ & & $\times$ & $\times$* & $\times$* & $\times$* & $\times$* & & $\times$ & $\times$ \\
 	\hline
-	Keeper\footnote{Se référer à la note de bas de page \ref{1p}} & $\times$* & $\times$*\footnote{Extension \textit{KeeperFill}} & $\times$* & $\times$* &$\times$* & $\times$* & $\times$* &$\times$* &$\times$* & $\times$* & $\times$* &  $\times$* \\
+	Keeper\footnote{Se référer à la note de bas de page \ref{1p}} & $\times$* & $\times$*\footnote{Extension \textit{KeeperFill}} & $\times$* & $\times$* &$\times$* & $\times$* & $\times$* &$\times$* &$\times$* & $\times$* & $\times$* &  $\times$* & $\times$* \\
 	\hline
 	\caption{Fonctionnalités proposées par les candidats}
 \end{longtable} 
-$\times$ : L'application propose cette fonctionnalités \\
+$\times$ : L'application propose cette fonctionnalité \\
 \textbf{*}\hspace{0.1cm} : Fonctionnalité proposée mais avec un version premium (payante) \\
 \textbf{!}\hspace{0.18cm} : Limitations avec une version gratuite \\
 
 Sur tous les candidats sélectionnés, nous remarquons que la plupart offre la majorité des fonctionnalités énumérées plus haut. Nous constatons que l'offre des constructeurs de gestionnaires de mots de passe est assez variée et répond à la demande des particuliers et des entreprises.
+
+Par rapport aux restaurations de sauvegarde, les gestionnaires cloud-based vont automatiquement créer des backups toutes les nuits, donc la restauration se fait directement dans le gestionnaire. Pour bitwarden, lorsque le gestionnaire est hébergé on-premise, il est nécessaire de créer ses propres procédures de sauvegardes. Etant donné que Keepass est uniquement en local, les sauvegardes doivent être faites manuellement et peuvent être importées sur l'application. Toutes ces solutions nécessitent le master password. Si ce dernier est oublié, il existe plusieurs solutions différentes en fonction des constructeurs (Fonctionnalité pas disponible sur Keepass). 
+
+La "sauvegarde" qui ne nécessite pas d'avoir son master password est l'exportation des données en fichier CSV, mais à moins de chiffrer le fichier, les données sont en claires ce qui n'est évidemment pas sécurisé et pas très recommandé.
 \section{Plateformes}
 Cette partie va permettre de visualiser sur quelles plateformes les gestionnaires de mots de passe sélectionnés sont supportés. \\
 \begin{longtable}[h]{|c|c|c|c|c|c|c|}

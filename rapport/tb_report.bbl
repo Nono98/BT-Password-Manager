@@ -1,4 +1,12 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{1passwordsecurity}
+1Password.
+\newblock 1password security design, 2021.
+
+\bibitem{bitwardensecurity}
+bitwarden.
+\newblock Bitwarden security whitepaper, 2022.
 
 \bibitem{bitwardenreport}
 bitwarden.
@@ -8,14 +16,26 @@ bitwarden.
 Clifford Colby, Rae Hodge, and Attila Tomaschek.
 \newblock Best password manager to use for 2022, 2022.
 
+\bibitem{dashlanesecurity}
+Dashlane.
+\newblock Security white paper, 2022.
+
 \bibitem{gallagher19}
 Elizabeth~A. Gallagher.
 \newblock Choosing the right password manager.
 \newblock {\em Serials Review}, 45:1--2, 84--87, 2019.
 
+\bibitem{keepasssecurity}
+KeePass.
+\newblock Security, 2022.
+
 \bibitem{PM22}
 Michael Kurko.
 \newblock Best password managers, 2022.
+
+\bibitem{lastpasssecurity}
+LastPass.
+\newblock Technical whitepaper.
 
 \bibitem{MSPM22}
 Paulius Masiliauskas.
