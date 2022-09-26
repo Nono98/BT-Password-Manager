@@ -6,7 +6,7 @@
 \chapter{Étude sécuritaire}
 \label{ch:etude_secu}
 
-Ce chapitre est dédié à toute l'analyse sécuritaire des gestionnaires de mots de passes en général. Nous allons dans un premier temps décrire comment ces applications sont sécurisées, puis justifier l'importance d'une forte sécurité suite à l'augmentation de la demande des entreprises et des particuliers.
+Ce chapitre est dédié à toute l'analyse sécuritaire des gestionnaires de mots de passes en général. Nous allons dans un premier temps décrire comment ces applications sont sécurisées en fonction de leur type, puis justifier l'importance d'une forte sécurité suite à l'augmentation de la demande des entreprises et des particuliers.
 
 Dans un second temps, nous allons identifier et analyser toutes les menaces existantes et / ou potentielles des \textit{password manager} en mettant en avant les failles actuellement connues des constructeurs et les conséquences de ces dernières ou des faiblesses qui pourraient survenir à tout moment (par exemple des cyberattaques).
 
@@ -16,19 +16,27 @@ Finalement, nous allons rédiger toutes les exigences sécuritaires que doivent 
 
 Dans cette section, afin de se baser sur des gestionnaires de mots de passe déjà existants et de pouvoir comparer les différentes sécurités implémentées, nous allons reprendre les 8 candidats sélectionnés dans la partie \hyperref[ch:etude_marche]{\textit{étude de marché}}, c'est-à-dire; \textit{LastPass}, \textit{Dashlane}, \textit{1Password}, \textit{KeePass}, \textit{Bitwarden}, \textit{NordPass}, \textit{RoboForm} et \textit{Keeper}. Toutes les informations citées sont basées sur les \textit{security whitepapers} des constructeurs\cite{lastpasssecurity}\cite{dashlanesecurity}\cite{1passwordsecurity}\cite{keepasssecurity}\cite{bitwardensecurity}.
 
-Les gestionnaires de mots de passe sélectionnés fonctionnent tous de la même manière, au final cette méthode est plutôt classique dans les architectures des applications. Un \textit{master password} (qui est seulement connue par l'utilisateur) est généré ou entré par l'utilisateur et va permettre le déverrouillage de l'application et le chiffrement / déchiffrement de toutes les données stockées. 
+Les gestionnaires de mots de passe sélectionnés fonctionnent tous de la même manière, au final cette méthode est plutôt classique dans les architectures des applications. Un \textit{master password} (qui est seulement connu par l'utilisateur) est généré ou entré par l'utilisateur et va permettre le déverrouillage de l'application et le chiffrement / déchiffrement de toutes les données stockées. 
 
-L'authentification unique (\textit{Single Sign-On} ou \textit{SSO}) permet de faciliter l'utilisateur car il doit mémoriser uniquement son \textit{master password} 
+
 
 - utilisation de la mémoire et stockage des secrets
+\subsection{Les gestionnaires cloud-based}
+\subsection{Les gestionnaires browser-based}
+\subsection{Les gestionnaires en local}
+\subsection{Partage d'informations}
+est-ce que c'est pertinent de parler de ça à ce moment ?
+\subsection{Perte du master password}
 \subsection{3 états du gestionnaire de mot de passe}
 
 \subsubsection{Etat \textit{Not Running}}
 \subsubsection{Etat \textit{Unlocked State}}
 en expliquant chaque état et pour l'état unlock expliquer comment est géré le master password, avec des schemas
+explication pour extension de navigateur, local et cloud-based
 \subsubsection{Etat \textit{Locked State}}
 
 + facteurs biométriques !
+
 \subsection{Algorithmes cryptographiques}
 - les algos utilisés pour le chiffrement et auth des données 
 \subsection{L'importance d'une forte sécurité}
