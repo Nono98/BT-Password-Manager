@@ -29,6 +29,10 @@ Elizabeth~A. Gallagher.
 KeePass.
 \newblock Security, 2022.
 
+\bibitem{keepersecurity}
+Keeper.
+\newblock Keeper encryption model, 2022.
+
 \bibitem{PM22}
 Michael Kurko.
 \newblock Best password managers, 2022.
@@ -40,6 +44,10 @@ LastPass.
 \bibitem{MSPM22}
 Paulius Masiliauskas.
 \newblock Most secure password managers in 2022, 2022.
+
+\bibitem{padlocsecurity}
+Padloc.
+\newblock Security whitepaper, 2022.
 
 \bibitem{PMC}
 PasswordManager.

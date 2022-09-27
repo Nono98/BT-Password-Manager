@@ -11,9 +11,9 @@ Ce chapitre vise à étudier les différentes fonctionnalités offertes par les 
 
 Nous allons également analyser les différents prix des applications ainsi que présenter où en est le marché actuel afin d'étudier la popularité de ces dernières.
 
-Pour l'étude de marché, les gestionnaires de mots de passe sélectionnés seront: \textit{LastPass}\footnote{\href{https://www.lastpass.com/}{https://www.lastpass.com/}}, \textit{Dashlane}\footnote{\href{https://www.dashlane.com/}{https://www.dashlane.com/}}, \textit{1Password}\footnote{\href{https://1password.com/}{https://1password.com/}}, \textit{KeePass}\footnote{\href{https://keepass.info/}{https://keepass.info/}}, \textit{Bitwarden}\footnote{\href{https://bitwarden.com/}{https://bitwarden.com/}}, \textit{NordPass}\footnote{\href{https://nordpass.com/}{https://nordpass.com/}}, \textit{RoboForm}\footnote{\href{https://www.roboform.com/}{https://www.roboform.com/}}, \textit{Keeper}\footnote{\href{https://www.keepersecurity.com/}{https://www.keepersecurity.com/}}.
+Pour l'étude de marché, les gestionnaires de mots de passe sélectionnés seront: \textit{LastPass}\footnote{\href{https://www.lastpass.com/}{https://www.lastpass.com/}}, \textit{Dashlane}\footnote{\href{https://www.dashlane.com/}{https://www.dashlane.com/}}, \textit{1Password}\footnote{\href{https://1password.com/}{https://1password.com/}}, \textit{KeePass}\footnote{\href{https://keepass.info/}{https://keepass.info/}}, \textit{Bitwarden}\footnote{\href{https://bitwarden.com/}{https://bitwarden.com/}}, \textit{NordPass}\footnote{\href{https://nordpass.com/}{https://nordpass.com/}}, \textit{Padloc}\footnote{\href{https://padloc.app/}{https://padloc.app/}}, \textit{Keeper}\footnote{\href{https://www.keepersecurity.com/}{https://www.keepersecurity.com/}}, \textit{Firefox}\footnote{\href{https://www.mozilla.org/fr/firefox/features/password-manager/}{https://www.mozilla.org/fr/firefox/features/password-manager/}}.
 
-Ils ont été sélectionnés en se basant sur leur popularité sur le marché ainsi qu'à la suite de lecture d'articles concernant les meilleurs gestionnaires de mots de passe \cite{BPM22}\cite{gallagher19}\cite{MSPM22}\cite{PM22}.
+Ils ont été sélectionnés en se basant sur leur popularité sur le marché ainsi qu'à la suite de lecture d'articles concernant les meilleurs gestionnaires de mots de passe \cite{BPM22}\cite{gallagher19}\cite{MSPM22}\cite{PM22}. Les applications open-source ont été avantagées lors de leurs sélections.
 \section{Fonctionnalités}
 Ci-après, une liste des fonctionnalités disponibles dans les gestionnaires de mots de passe. Cette énumération se base sur toutes les fonctionnalités citées sur les websites des différents \textit{password manager}. \\
 \begin{enumerate}
@@ -28,30 +28,31 @@ Ci-après, une liste des fonctionnalités disponibles dans les gestionnaires de 
 \item Self-hosting
 \item Support prioritaire
 \item Connexion à l'aide de facteurs biométriques (\textit{fingerprint} ou \textit{facial recognition}) ou d'un pin
-\item Possibilité de stockage des secrets en local
 \item \textit{Backup \& Restore}, possibilité de récupérer une ancienne sauvegarde
 
 \end{enumerate}
 Ci-dessous un tableau récapitulatif qui indique quels gestionnaires de mots de passe offre quelles fonctionnalités. 
-\begin{longtable}[h]{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\begin{longtable}[h]{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 	\hline
-	Application & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 \\
+	Application & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
 	\hline
-	LastPass & $\times$ & $\times$ & $\times$! & $\times$* & $\times$* &  $\times$*& $\times$ & $\times$ & & $\times$* & $\times$* & $\times$ & \\
+	LastPass & $\times$ & $\times$ & $\times$! & $\times$* & $\times$* &  $\times$*& $\times$ & $\times$ & & $\times$* & $\times$* &  \\
 		\hline
-	Dashlane & $\times$* & $\times$ & $\times$! & $\times$ & $\times$* & $\times$ & $\times$* & $\times$! & & & & $\times$ & $\times$ \\
+	Dashlane & $\times$* & $\times$ & $\times$! & $\times$ & $\times$* & $\times$ & $\times$* & $\times$! & & &  & $\times$ \\
 		\hline
-	1Password\footnote{L'application est totalement payante et différents abonnements sont proposés \label{1p}} & $\times$* & $\times$* & $\times$* & $\times$* & & $\times$* & $\times$* & $\times$* & & $\times$* & & $\times$* & $\times$ \\
+	1Password\footnote{L'application est totalement payante et différents abonnements sont proposés \label{1p}} & $\times$* & $\times$* & $\times$* & $\times$* & & $\times$* & $\times$* & $\times$* & & $\times$* & & $\times$ \\
 			\hline
-	KeePass \footnote{En général, nécessite l'installation de plugins supplémentaires afin de profiter de toutes les fonctionnalités} & $\times$ & $\times$ &  & $\times$ & $\times$ & & & $\times$ & $\times$ & & $\times$ & $\times$ & $\times$ \\
+	KeePass \footnote{En général, nécessite l'installation de plugins supplémentaires afin de profiter de toutes les fonctionnalités} & $\times$ & $\times$ &  & $\times$ & $\times$ & & & $\times$ & $\times$ & & $\times$ & $\times$ \\
 		\hline
-	Bitwarden &  & $\times$  & $\times$! & $\times$ & $\times$* & $\times$* & $\times$ & $\times$! & $\times$* &  $\times$* & $\times$!& $\times$ & $\times$\\
+	Bitwarden &  & $\times$  & $\times$! & $\times$ & $\times$* & $\times$* & $\times$ & $\times$! & $\times$* &  $\times$* & $\times$! & $\times$\\
 	\hline
-	NordPass & $\times$ & $\times$ & $\times$*  & $\times$ & $\times$* & & $\times$ & $\times$ & $\times$* & $\times$* & $\times$ & $\times$ & \\
+	NordPass & $\times$ & $\times$ & $\times$*  & $\times$ & $\times$* & & $\times$ & $\times$ & $\times$* & $\times$* & $\times$ & \\
 	\hline
-	RoboForm & $\times$ & $\times$ & $\times$* & $\times$ & & $\times$ & $\times$* & $\times$* & $\times$* & $\times$* & & $\times$ & $\times$ \\
+	Padloc & $\times$ & $\times$ & $\times$* & $\times$ & $\times$* & & $\times$ & $\times$* & $\times$ & $\times$* & $\times$ & \\
 	\hline
-	Keeper\footnote{Se référer à la note de bas de page \ref{1p}} & $\times$* & $\times$*\footnote{Extension \textit{KeeperFill}} & $\times$* & $\times$* &$\times$* & $\times$* & $\times$* &$\times$* &$\times$* & $\times$* & $\times$* &  $\times$* & $\times$* \\
+	Keeper\footnote{Se référer à la note de bas de page \ref{1p}} & $\times$* & $\times$*\footnote{Extension \textit{KeeperFill}} & $\times$* & $\times$* &$\times$* & $\times$* & $\times$* &$\times$* &$\times$* & $\times$* & $\times$* & $\times$* \\
+	\hline
+	Firefox &  & $\times$  &  & $\times$  & $\times$ & $\times$ & $\times$ &  &  &  &  & \\
 	\hline
 	\caption{Fonctionnalités proposées par les candidats}
 \end{longtable} 
@@ -72,7 +73,7 @@ Cette partie va permettre de visualiser sur quelles plateformes les gestionnaire
 	\hline
 	LastPass & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ &  $\times$\\
 		\hline
-	Dashlane & $\times$ & $\times$ & $\times$! & $\times$ & $\times$ & $\times$  \\
+	Dashlane & &  &  &&  & $\times$  \\
 		\hline
 	1Password & $\times$ & $\times$ & $\times$ & $\times$ & $\times$& \\
 	\hline
@@ -82,15 +83,16 @@ Cette partie va permettre de visualiser sur quelles plateformes les gestionnaire
 		\hline
 	NordPass & $\times$ & $\times$ & $\times$  & $\times$ & $\times$ &  \\
 		\hline
-	RoboForm & $\times$ & $\times$ & $\times$! & $\times$ & & $\times$ \\
+	Padloc & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
 		\hline
 	Keeper & $\times$ & $\times$ & $\times$ & $\times$ &$\times$ & $\times$ \\
+		\hline
+	Firefox & &  &  &&  & $\times$  \\
 		\hline
 	\caption{Plateformes supportées par les différentes applications}
 \end{longtable}
 $\times$ : L'application est supportée sur ces plateformes \\
 \textbf{*}\hspace{0.1cm} :  Des applications (ou des paquets) compatibles avec KeePass Password Safe non-officielles mais contribuées existent \\
-\textbf{!}\hspace{0.18cm} : Utilisation via des extensions de navigateur \\
 
 Même si un gestionnaire supporte toutes les plateformes indiquées, il est nécessaire d'aller vérifier les conditions d'utilisation du système, c'est-à-dire les versions des plateformes afin de s'assurer que l'application fonctionnera quand même. 
 
@@ -117,11 +119,13 @@ Les tarifs ci-dessous sont exprimés en mensualités et en USD. \\
 		\hline
 	NordPass & \$0 & \$1.84 & \$4.99  \\
 	\hline
-	RoboForm & \$0 & \$1.99 & \$3.99    \\
+	Padloc & \$0 & \$3.49 & \$5.95    \\
 	\hline
 	Keeper & non & \$2.92 & \$6.25  \\
-		\hline
-			\caption{Tarifs pour particuliers}
+	\hline
+	Firefox & non & non & non  \\
+	\hline
+\caption{Tarifs pour particuliers}
 \end{longtable}
 \subsection{Entreprises}
 Les entreprises ont quant à elle des prix différents dû à leurs besoins spécifiques où ils pourraient avoir besoin d'un devis personnel afin de choisir l'abonnement qui convient au mieux à leur infrastructure. Il existe plusieurs catégories qui sont en fonction du nombre d'employés et également par rapport aux fonctionnalités souhaitées. 
@@ -143,13 +147,16 @@ Chaque prix est indiqué en mensualités, en USD et par employé.
 	\hline
 	NordPass &  & \$3.50* \\
 	\hline
+	Padloc & \$3.49 & \$6.99* \\
+	\hline
 	Keeper & & \$3.75* \\
 	\hline
+	Firefox & non & non \\
+    \hline
 	\caption{Tarifs pour les entreprises}
 \end{longtable}
 \textbf{*}\hspace{0.1cm} :  Il y a la possibilité d'établir un devis en fonction des besoins spécifiques de l'entreprise \\
 
-Le gestionnaire de mots de passe \textit{RoboForm} propose des gammes de prix allant de \$33.90 à \$25.90 /an/utilisateur en fonction du nombre d'utilisateurs de l'entreprise. Dès le moment, où l'entreprise gère plus de 1000 postes, il est nécessaire d'établir un devis avec les vendeurs.
 \section{Marché actuel}
 Afin d'effectuer une étude un peu plus approfondie et afin d'établir un constat de la demande actuelle sur le marché et de leur popularité, nous allons analyser les différentes statistiques des gestionnaires de mots de passe. 
 
@@ -177,6 +184,8 @@ bitwarden propose une version gratuite étonnement très complète avec un stock
 
 NordPass propose également une version gratuite complète qui permet le MFA ou encore la synchronisation entre plusieurs appareils, ce qui est très utile. Le premium propose l'aspect sécuritaire en plus. Cependant, c'est la solution gratuite la meilleure de tous les candidats sélectionnés.
 
-RoboForm ne permet pas la synchronisation et l'utilisation du cloud dans la version gratuite, mais sinon le reste des fonctionnalités proposées sont celles qu'on attend d'un gestionnaire de mot de passe classique.
+Padloc n'est pas un gestionnaire très populaire mais il l'avantage d'être open-source et d'être disponible sur Github\footnote{\href{https://github.com/padloc/padloc}{https://github.com/padloc/padloc}}. La version gratuite n'offre pas beaucoup de fonctionnalités mais il y a la possibilité de stocker un nombre illimité de secrets et d'y connecter un nombre illimité d'appareils. De plus, il est multi-plateformes.
 
-Finalement, Keeper est complètement payant mais a une offre très complète et est particulièrement bien adapté pour les entreprises.
+Keeper est complètement payant mais a une offre très complète et est particulièrement bien adapté pour les entreprises.
+
+Finalement, le gestionnaire de mots de passe proposé par Firefox est directement inclus avec le navigateur, ainsi ses fonctionnalités proposées sont assez basiques et pas très poussées, mais il propose les fonctionnalités attendues d'un gestionnaire, c'est-à-dire enregistrement, génération et synchronisation de mots de passe.

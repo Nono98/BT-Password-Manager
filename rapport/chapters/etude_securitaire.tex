@@ -14,15 +14,19 @@ Finalement, nous allons rédiger toutes les exigences sécuritaires que doivent 
 
 \section{Implémentation de la sécurité dans les gestionnaires de mots de passe}
 
-Dans cette section, afin de se baser sur des gestionnaires de mots de passe déjà existants et de pouvoir comparer les différentes sécurités implémentées, nous allons reprendre les 8 candidats sélectionnés dans la partie \hyperref[ch:etude_marche]{\textit{étude de marché}}, c'est-à-dire; \textit{LastPass}, \textit{Dashlane}, \textit{1Password}, \textit{KeePass}, \textit{Bitwarden}, \textit{NordPass}, \textit{RoboForm} et \textit{Keeper}. Toutes les informations citées sont basées sur les \textit{security whitepapers} des constructeurs\cite{lastpasssecurity}\cite{dashlanesecurity}\cite{1passwordsecurity}\cite{keepasssecurity}\cite{bitwardensecurity}.
+Dans cette section, afin de se baser sur des gestionnaires de mots de passe déjà existants et de pouvoir comparer les différentes sécurités implémentées, nous allons reprendre les 8 candidats sélectionnés dans la partie \hyperref[ch:etude_marche]{\textit{étude de marché}}, c'est-à-dire; \textit{LastPass}, \textit{Dashlane}, \textit{1Password}, \textit{KeePass}, \textit{Bitwarden}, \textit{NordPass}, \textit{Padloc} et \textit{Keeper}. Toutes les informations citées sont basées sur les \textit{security whitepapers} des constructeurs\cite{lastpasssecurity}\cite{dashlanesecurity}\cite{1passwordsecurity}\cite{keepasssecurity}\cite{bitwardensecurity}\cite{padlocsecurity}\cite{keepersecurity}.
 
 Les gestionnaires de mots de passe sélectionnés fonctionnent tous de la même manière, au final cette méthode est plutôt classique dans les architectures des applications. Un \textit{master password} (qui est seulement connu par l'utilisateur) est généré ou entré par l'utilisateur et va permettre le déverrouillage de l'application et le chiffrement / déchiffrement de toutes les données stockées. 
 
+À part pour les gestionnaires en local qui gèrent la sécurité différemment, ils mettent en avant le \textit{Zero-knowledge encryption}. C'est une méthode qui va permettre un chiffrement \textit{end-to-end} et qui va sécuriser au mieux les données personnelles et sensibles des utilisateurs des serveurs du constructeur. En sachant que toutes les données sont stockées dans le cloud du provider, afin d'éviter que n'importe qui puisse y avoir accès, toutes les données sont chiffrées avant d'être envoyées au serveur. La clé de chiffrement reste sur le device de l'utilisateur.
 
+Nous allons décrire dans les sous-sections suivantes comment la sécurité est implémentée dans les gestionnaires de mots de passe en fonction de leur type. 
 
 - utilisation de la mémoire et stockage des secrets
 \subsection{Les gestionnaires cloud-based}
+last pass
 \subsection{Les gestionnaires browser-based}
+google chrome
 \subsection{Les gestionnaires en local}
 \subsection{Partage d'informations}
 est-ce que c'est pertinent de parler de ça à ce moment ?
@@ -46,4 +50,5 @@ explication pour extension de navigateur, local et cloud-based
 \colorbox{pink}{\parbox{15cm}{à voir si je devrais pas les ajouter dans le chapitre de l'analyse de chaque gestionnaire sélectionné}}
 \subsection{Conséquences d'une quelconque faiblesse}
 \colorbox{pink}{\parbox{15cm}{à voir si utile, mais les conséquences seront sûrement soulignées lorsque je ferai l'analyse de menaces de toute manière}}
+- remember me du master password HAA
 \section{Exigences sécuritaires à respecter}
