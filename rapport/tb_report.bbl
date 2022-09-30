@@ -4,6 +4,10 @@
 1Password.
 \newblock 1password security design, 2021.
 
+\bibitem{firefoxEncr}
+Apr4h.
+\newblock Decrypting browser credentials for fun (but not profit), 2019.
+
 \bibitem{bitwardensecurity}
 bitwarden.
 \newblock Bitwarden security whitepaper, 2022.
@@ -20,10 +24,28 @@ Clifford Colby, Rae Hodge, and Attila Tomaschek.
 Dashlane.
 \newblock Security white paper, 2022.
 
+\bibitem{ecrypt}
+ECRYPT-CSA.
+\newblock Algorithms, key size and protocols report, 2018.
+
 \bibitem{gallagher19}
 Elizabeth~A. Gallagher.
 \newblock Choosing the right password manager.
 \newblock {\em Serials Review}, 45:1--2, 84--87, 2019.
+
+\bibitem{GoogleChrome}
+Eric Griffith.
+\newblock How to master google password manager, 2022.
+
+\bibitem{keepassieee}
+Jingxin~Hong Hengwei~Zhang and Jun Hu.
+\newblock Analysis of encryption mechanism in keepass password safe 2.30.
+\newblock {\em 2016 10th IEEE International Conference on Anti-counterfeiting,
+  Security, and Identification (ASID)}, pages 43--46, 2016.
+
+\bibitem{iseexploit}
+ISE.
+\newblock Password managers: Under the hood of secrets management, 2019.
 
 \bibitem{keepasssecurity}
 KeePass.
@@ -41,6 +63,10 @@ Michael Kurko.
 LastPass.
 \newblock Technical whitepaper.
 
+\bibitem{keepassstruct}
+lgg.
+\newblock Keepass file format explained, 2017.
+
 \bibitem{MSPM22}
 Paulius Masiliauskas.
 \newblock Most secure password managers in 2022, 2022.
@@ -53,6 +79,10 @@ Padloc.
 PasswordManager.
 \newblock Password manager trust survey, 2020.
 
+\bibitem{firefoxsync}
+Tom Ritter.
+\newblock Private by design: How we built firefox sync, 2018.
+
 \bibitem{PM21}
 Security.org Team.
 \newblock Password manager and vault 2021 annual report: Usage, awareness, and
@@ -61,5 +91,9 @@ Security.org Team.
 \bibitem{dbir}
 Verizon.
 \newblock 2022 data breach investigations report, 2022.
+
+\bibitem{Browser}
+Liz Wegerer.
+\newblock Is your browser’s password manager safe?, 2022.
 
 \end{thebibliography}

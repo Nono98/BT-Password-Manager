@@ -33,45 +33,59 @@ Warning--entry type for "padlocsecurity" isn't style-file defined
 --line 107 of file chapters/biblio.bib
 Warning--entry type for "keepersecurity" isn't style-file defined
 --line 116 of file chapters/biblio.bib
-You've used 15 entries,
+Warning--entry type for "GoogleChrome" isn't style-file defined
+--line 124 of file chapters/biblio.bib
+Warning--entry type for "Browser" isn't style-file defined
+--line 132 of file chapters/biblio.bib
+Warning--entry type for "ecrypt" isn't style-file defined
+--line 140 of file chapters/biblio.bib
+Warning--entry type for "firefoxEncr" isn't style-file defined
+--line 149 of file chapters/biblio.bib
+Warning--entry type for "firefoxsync" isn't style-file defined
+--line 157 of file chapters/biblio.bib
+Warning--entry type for "keepassstruct" isn't style-file defined
+--line 165 of file chapters/biblio.bib
+Warning--entry type for "iseexploit" isn't style-file defined
+--line 182 of file chapters/biblio.bib
+You've used 23 entries,
             2118 wiz_defined-function locations,
-            553 strings with 4898 characters,
-and the built_in function-call counts, 3155 in all, are:
-= -- 275
-> -- 116
-< -- 0
-+ -- 49
-- -- 34
-* -- 115
-:= -- 521
-add.period$ -- 31
-call.type$ -- 15
-change.case$ -- 62
+            585 strings with 5586 characters,
+and the built_in function-call counts, 4910 in all, are:
+= -- 433
+> -- 178
+< -- 1
++ -- 75
+- -- 52
+* -- 177
+:= -- 802
+add.period$ -- 48
+call.type$ -- 23
+change.case$ -- 95
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 109
-empty$ -- 338
-format.name$ -- 34
-if$ -- 682
+cite$ -- 23
+duplicate$ -- 176
+empty$ -- 521
+format.name$ -- 52
+if$ -- 1070
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 1
-newline$ -- 64
-num.names$ -- 30
-pop$ -- 129
+int.to.str$ -- 23
+missing$ -- 2
+newline$ -- 97
+num.names$ -- 46
+pop$ -- 197
 preamble$ -- 1
-purify$ -- 47
+purify$ -- 72
 quote$ -- 0
-skip$ -- 120
+skip$ -- 193
 stack$ -- 0
-substring$ -- 105
-swap$ -- 15
-text.length$ -- 0
+substring$ -- 165
+swap$ -- 30
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 92
 warning$ -- 0
-while$ -- 31
-width$ -- 17
-write$ -- 124
-(There were 15 warnings)
+while$ -- 49
+width$ -- 25
+write$ -- 191
+(There were 22 warnings)
