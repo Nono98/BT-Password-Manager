@@ -1,0 +1,95 @@
+% +---------------------------------------------------------------+
+% | Author :    Noémie Plancherel, HEIG-VD
+% | Date :      04.10.2022
+% +---------------------------------------------------------------+
+
+\chapter{Analyse de menaces}
+\label{ch:analyse_menaces}
+
+Ce chapitre a pour but d'identifier et analyser toutes les menaces existantes et / ou potentielles des \textit{password manager} en les modélisant en suivant un certain processus afin d'avoir une meilleure vision des risques.
+
+Puis, nous allons rédiger toutes les exigences sécuritaires que doivent respecter les gestionnaires de mots de passe afin que ces dernières garantissent une utilisation sûre qui évite des pertes ou vol de données.
+
+\section{Modélisation de menaces}
+Afin de modéliser correctement les menaces, nous allons suivre la norme ISO 27005\cite{ISO27005}. Cela va nous permettre de séparer la modélisation en un processus avec plusieurs étapes comme suit:
+
+\begin{enumerate}
+	\item Établissement du contexte, qui inclut
+	\begin{itemize}
+		\item Objectifs des gestionnaires de mots de passe
+		\item Hypothèses et exigences de sécurité
+		\item Actifs à haute valeur 
+		\item Data Flow Diagram
+	\end{itemize}
+	\item Identification des risques
+	\item Analyse des risques
+	\item Évaluation des risques
+	\item Traitement des risques
+	\item Documentation 
+\end{enumerate}
+La dernière étape ne sera pas explicitement abordée car elle vise à documenter le modèle de menaces que nous allons établir.
+
+Pour chaque étape du processus, nous allons aborder les 3 types de gestionnaires existants; cloud-based, browser-based et local-based. On peut cependant les grouper en deux catégories différentes car le cloud-based et browser-based fonctionnent de la même manière lors de synchronisations de données.
+
+Nous allons également nous baser sur le processus de modélisation de menaces de OWASP\cite{owasp}.
+\subsection{Établissement du contexte}
+Dans cette section, nous allons comprendre les applications et comment interagissent les gestionnaires de mots de passe avec les entités externes. Au final, nous allons établir un \textit{Data Flow Diagram} (DFD) qui va nous permettre de présenter tous les chemins différents du système en mettant en avant les vulnérabilités potentielles.
+
+Comme cité plusieurs fois, l'objectif principal d'un gestionnaire de mots de passe est de stocker de manière \textbf{sûre} des informations sensibles, le plus souvent des identifiants, mais également la possibilité de stocker des notes, des informations bancaires, contrats, etc. Ils offrent également la possibilité de générer des mots de passe fort, d'auto-compléter les champs de connexion.
+
+On peut émettre plusieurs hypothèses de sécurité afin de mettre en avant ce que doit assurer le gestionnaire de mots de passe pour être considéré comme sûr. Nous séparons ces hypothèses en deux groupes; concernant l'utilisateur et concernant l'application en elle-même. 
+
+\textbf{Utilisateur}
+\begin{itemize}
+	\item Master password fort
+	\item Master password unique et différent d'autres identifiants de l'utilisateur
+\end{itemize}
+
+\textbf{Système}
+\begin{itemize}
+	\item Données du gestionnaire chiffrées / protégées
+	\item Clés ou master password protégés dans la mémoire du processus ou complète
+	\item Presse-papier effacé après un certain temps
+	\item Utilisation d'algorithmes cryptographiques forts et recommandés
+	\item Génération de mots de passe suffisamment forts
+	\item Authentification des données
+	\item Données effacées du disque lorsque le gestionnaire est dans un état \textit{Not Running} ou \textit{Locked}
+	\item Base de données en local protégée
+	\item Communication avec les serveurs chiffrée (cloud)
+	\item Informations sensibles non-transmises en clair aux serveurs (cloud)
+	\item Serveurs de confiance (cloud)
+\end{itemize}
+
+Nous pouvons à présent définir les actifs (\textit{assets})  des gestionnaires de mots de passe, qui représentes les éléments qui ont de la valeur et qui demande une protection. 
+
+Le premier actif important est \textbf{la base de données} qui contient tous les identifiants, notes, informations bancaires, stockées par l'utilisateur. En soit, cette dernière représente le coffre-fort. Le bien principal sont donc les données. Nous souhaitons garantir les éléments suivants:
+\begin{itemize}
+	\item Confidentialité des données
+	\item Intégrité des données
+\end{itemize}
+
+Un autre actif à haute valeur sont les clés de chiffrement (ou les clés privées dans le cadre de partage de données avec d'autres utilisateurs). Nous voulons garantir ces éléments:
+\begin{itemize}
+	\item Confidentialité 
+	\item Intégrité
+\end{itemize}
+
+Finalement, dans le cadre de gestionnaires de mots de passe cloud-based (ou browser-based) qui ne fonctionnent pas en mode offline, nous voulons protéger les serveurs du provider. Nous souhaitons assurer:
+\begin{itemize}
+	\item Confidentialité
+	\item Disponibilité du service
+\end{itemize}
+
+À présent, nous allons définir le DFD afin de correctement décomposer le système. Afin d'avoir la meilleure vue d'ensemble, nous allons faire un diagramme pour les gestionnaires local-based et un autre pour les cloud-based.
+\subsection{Identification des risques}
+\subsection{Analyse des risques}
+\subsection{Évaluation des risques}
+\subsection{Traitement des risques}
+
+
+\subsection{Failles connues des constructeurs}
+\colorbox{pink}{\parbox{15cm}{à voir si je devrais pas les ajouter dans le chapitre de l'analyse de chaque gestionnaire sélectionné}}
+\subsection{Conséquences d'une quelconque faiblesse}
+\colorbox{pink}{\parbox{15cm}{à voir si utile, mais les conséquences seront sûrement soulignées lorsque je ferai l'analyse de menaces de toute manière}}
+- remember me du master password HAA
+\section{Exigences sécuritaires à respecter} 

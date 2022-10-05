@@ -8,10 +8,6 @@
 
 Ce chapitre est dédié à toute l'analyse sécuritaire des gestionnaires de mots de passes en général. Nous allons dans un premier temps décrire comment ces applications sont sécurisées en fonction de leur type, puis justifier l'importance d'une forte sécurité suite à l'augmentation de la demande des entreprises et des particuliers.
 
-Dans un second temps, nous allons identifier et analyser toutes les menaces existantes et / ou potentielles des \textit{password manager} en mettant en avant les failles actuellement connues des constructeurs et les conséquences de ces dernières ou des faiblesses qui pourraient survenir à tout moment (par exemple des cyberattaques).
-
-Finalement, nous allons rédiger toutes les exigences sécuritaires que doivent respecter les gestionnaires de mots de passe afin que ces dernières garantissent une utilisation sûre qui évite des pertes ou vol de données.
-
 \section{Implémentation de la sécurité dans les gestionnaires de mots de passe}
 
 Dans cette section, afin de se baser sur des gestionnaires de mots de passe déjà existants et de pouvoir comparer les différentes sécurités implémentées, nous allons reprendre les 9 candidats sélectionnés dans la partie \hyperref[ch:etude_marche]{\textit{étude de marché}}, c'est-à-dire; \textit{LastPass}, \textit{Dashlane}, \textit{1Password}, \textit{KeePass}, \textit{Bitwarden}, \textit{NordPass}, \textit{Padloc}, \textit{Keeper} et \textit{Firefox}. Toutes les informations citées sont basées sur les \textit{security whitepapers} des constructeurs\cite{lastpasssecurity}\cite{dashlanesecurity}\cite{1passwordsecurity}\cite{keepasssecurity}\cite{bitwardensecurity}\cite{padlocsecurity}\cite{keepersecurity}.
@@ -58,7 +54,7 @@ La base de données est stockée où l'utilisateur le souhaite (avec une possibi
 
 Tous les deux sont authentifiés avec le schéma Encrypt-then-Mac avec HMAC-SHA256. 
 
-Au niveau de l'utilisation de la mémoire du processus, lors de l'ouverture de la base de données chiffrée, elle est chargée en mémoire. La protection de la mémoire s'applique aux données sensibles telles que la Master key et des mots de passe. Dès que la base de donnée est sauvegardée, les données chiffrées sont envoyées sur le disque.
+Au niveau de l'utilisation de la mémoire du processus, lors de l'ouverture de la base de données chiffrée, elle est chargée en mémoire. La protection de la mémoire s'applique aux données sensibles telles que la Master key et des mots de passe. Dès que la base de donnée est sauvegardée, les données chiffrées sont envoyées sur le disque. Dès le moment où l'application est verrouillée ou le processus arrêté, le disque est nettoyé afin qu'il ne contienne aucune information sensible.
 
  \newpage
 
@@ -76,7 +72,7 @@ Chaque output est haché avec SHA-256 et au final, on obtient la Master key qui 
 Les deux différentes seeds utilisées dans la génération de la clé sont stockées dans le header de la base de données \textit{.kdbx}.
 
 Cette architecture permet de se protéger contre les attaques par dictionnaires et le brute-force de la Master key.
-
+\newline\newline
 \subsection{Les gestionnaires cloud-based}
 Les gestionnaires de mots de passes cloud-based ont tous une architecture similaire dû au fait que toutes les données sont stockées sur les serveurs du constructeur. Il y a des différences avec l'authentification de l'utilisateur et des algorithmes cryptographiques choisis, mais le design sécuritaire a la même base au niveau de la connexion de l'utilisateur et du chiffrement du gestionnaire. 
 
@@ -87,25 +83,58 @@ Ainsi, afin d'expliquer un peu plus en détail le fonctionnement d'un gestionnai
 	\caption{Schéma de déchiffrement de LastPass}
 \end{figure}
 
-Afin de générer la clé de chiffrement, ce dernier dérive le master password en utilisant le nom d'utilisateur comme sel. Il utilise l'algorithme PBKDF2-SHA256 avec 100'100 rounds. 
-\subsection{Partage d'informations}
-\subsection{Perte du master password}
-\subsection{3 états du gestionnaire de mot de passe}
-Les gestionnaires de mots de passe ont généralement 3 états différents, \textit{Not Running}, \textit{Unlocked State} et \textit{Locked State}. Nous allons expliquer plus en détails comment ils fonctionnent lorsqu'ils sont dans les différents états. Nous nous basons sur un article qui analyse le management des secrets\cite{iseexploit}.
-\subsubsection{Etat \textit{Not Running}}
-C'est l'état du password manager lorsqu'il n'a jamais été utilisé et configuré après son installation. On définit également cet état s'il n'a pas été lancé depuis le dernier redémarrage du système ou a été arrêté par un utilisateur. Dans cet état, le gestionnaire doit garantir qu'il n'y a aucune donnée sensible stockée sur le disque, comme une clé de chiffrement ou le master password.
-\subsubsection{Etat \textit{Unlocked State}}
-Cet état indique que le gestionnaire fonctionne et donc, l'utilisateur a entré son master password afin de déchiffrer toutes les données afin d'avoir accès aux informations stockées. Le gestionnaire doit garantir qu'il n'est pas possible d'extraire aucune information sensible de la mémoire.
-\subsubsection{Etat \textit{Locked State}}
-Nous considérons cet état lorsque l'utilisateur a lancé le gestionnaire (déjà configuré) sans avoir encore entré le master password ou qu'il a lui même verrouiller son gestionnaire. À ce moment, il ne devrait pas y avoir de données sensibles stockées sur le disque afin d'éviter toute extraction. 
-\subsection{Algorithmes cryptographiques}
-- les algos utilisés pour le chiffrement et auth des données 
-\subsection{L'importance d'une forte sécurité}
+Afin de générer la clé de chiffrement, ce dernier dérive le master password en utilisant le nom d'utilisateur comme sel. Il utilise l'algorithme PBKDF2-SHA256 avec 100'100 rounds. Du côté client, l'output est hashé une fois de plus et est envoyé aux serveurs du provider afin de comparer ce hash d'authentification à celui qui est dans la base de données.
+
+Toutes les données de l'utilisateur sont chiffrées avec AES-256-CBC avec la clé de chiffrement générée depuis le master password.
+
+Les serveurs de LastPass stockeront la hash d'authentification et le coffre-fort de l'utilisateur chiffré. La clé de chiffrement reste sur le device en local dans la mémoire du processus.
+
+Tous les gestionnaires de mots de passe incluent la fonctionnalité de 2FA (voire MFA). La façon dont est géré cette sécurité additionnelle dépend du constructeur et de la méthode utilisée, certains stockent une clé supplémentaire sur les serveurs, d'autres stockent en local les informations (notammant avec les facteurs biométriques). Lors de la génération de la clé de chiffrement, le master password et les facteurs supplémentaires sont combinés pour y dériver la clé.
+\section{Partage d'informations}
+La majorité des gestionnaires de mots de passe proposent le partage d'informations entre plusieurs utilisateurs. Nous n'allons pas entrer dans tous les détails dans cette sous-section afin de rester bref et d'expliquer le schéma général du partage de données.
+
+Pour cette fonctionnalité, nous utilisons la cryptographie asymétrique avec RSA. Dès l'insription et la création du coffre-fort de l'utilisateur, une paire de clé de 2048 bits [publique, privée] est générée. 
+
+La façon dont est géré le stockage des clés dépend du constructeur mais en général, la clé publique est envoyée aux serveurs, tandis que la clé privée est soit stocké avec les données personnelles de l'utilisateur, soit envoyée aux serveurs. Cette dernière est chiffrée afin de garantir sa protection et étant donné qu'elle est personnelle et n'est pas censé être transmise entre utilisateurs, cela est tout à fait concevable. Pour le chiffrement, soit la même clé pour le chiffrement des données est utilisée ou une clé symétrique supplémentaire est générée. 
+
+Afin d'illustrer concrètement le processus complet, nous allons nous baser sur le gestionnaire Dashlane et nous montrerons un exemple où Alice souhaiterait partager un identifiant à un autre utilisateur, Bob.
+\newpage 
+\begin{figure}[h!]
+	\includegraphics[width=15.5cm]{images/dashlane_share_alice.png}
+	\centering
+	\caption{Partage d'un identifiant sur Dashlane}
+\end{figure}
+
+Les différents éléments à considérer:
+\begin{itemize}
+	\item \verb|pubKey| est la clé publique de Bob et va servir à chiffrer l'information à partager
+	\item \verb|privKey| est la clé privée de Bob
+	\item \verb|objKey| est la clé symétrique AES-56 générée avec un CSPRNG qui chiffre l'identifiant à partager
+	\item \verb|bobEncrObjKey| est la clé unique de l'objet chiffrée avec la clé publique de Bob
+	\item \verb|encrCredential| est l'identifiant à partager chiffré avec la clé générée à l'étape précédente
+\end{itemize}
+
+A chaque fois qu'un élément doit être partagé, on génère une clé symétrique aléatoirement qui est stockée sur les serveurs du provider à l'aide de la clé publique de l'utilisateur concerné. La clé est générée à l'aide d'un CSPRNG. Elle va permettre de chiffrer les identifiants avec AES-CBC et HMAC-SHA2, qui va permettre de garantir la confidentialité ainsi que l'intégrité en l'authentifiant.
+\begin{figure}[h!]
+	\includegraphics[width=15.5cm]{images/dashlane_share_bob.png}
+	\centering
+	\caption{Réception d'un partage d'identifiant sur Dashlane}
+\end{figure}
+
+Afin de récupérer le partage, Dashlane demande à l'utilisateur d'accepter l'envoi d'Alice pour qu'il accepte d'utiliser sa clé privée. Tout dépend de l'architecture de l'application, mais cette dernière doit d'abord être déchiffrée avant d'être utilisée pour déchiffrer l'identifiant envoyé par Alice.
+
+Certains gestionnaires proposent de faire des répertoires partagés. Dans le cadre d'entreprises, cela est une fonctionnalité très utile. Le processus est le même que pour le partage avec une personne. Une clé pour le dossier à partager est générée et on chiffre chaque clé publique de tous les utilisateurs concernés à l'aide de cette dernière.
+\section{Perte du master password}
 \colorbox{pink}{\parbox{15cm}{à voir si utile}}
-\section{Analyse des menaces}
-\subsection{Failles connues des constructeurs}
-\colorbox{pink}{\parbox{15cm}{à voir si je devrais pas les ajouter dans le chapitre de l'analyse de chaque gestionnaire sélectionné}}
-\subsection{Conséquences d'une quelconque faiblesse}
-\colorbox{pink}{\parbox{15cm}{à voir si utile, mais les conséquences seront sûrement soulignées lorsque je ferai l'analyse de menaces de toute manière}}
-- remember me du master password HAA
-\section{Exigences sécuritaires à respecter}
+\section{3 états du gestionnaire de mot de passe}
+Les gestionnaires de mots de passe ont généralement 3 états différents, \textit{Not Running}, \textit{Unlocked State} et \textit{Locked State}. Nous allons expliquer plus en détails comment ils fonctionnent lorsqu'ils sont dans les différents états. Nous nous basons sur un article qui analyse le management des secrets\cite{iseexploit}.
+\subsection{Etat \textit{Not Running}}
+C'est l'état du password manager lorsqu'il n'a jamais été utilisé et configuré après son installation. On définit également cet état s'il n'a pas été lancé depuis le dernier redémarrage du système ou a été arrêté par un utilisateur. Dans cet état, le gestionnaire doit garantir qu'il n'y a aucune donnée sensible stockée sur le disque, comme une clé de chiffrement ou le master password.
+\subsection{Etat \textit{Unlocked State}}
+Cet état indique que le gestionnaire fonctionne et donc, l'utilisateur a entré son master password afin de déchiffrer toutes les données afin d'avoir accès aux informations stockées. Le gestionnaire doit garantir qu'il n'est pas possible d'extraire aucune information sensible de la mémoire.
+\subsection{Etat \textit{Locked State}}
+Nous considérons cet état lorsque l'utilisateur a lancé le gestionnaire (déjà configuré) sans avoir encore entré le master password ou qu'il a lui même verrouiller son gestionnaire. À ce moment, il ne devrait pas y avoir de données sensibles stockées sur le disque afin d'éviter toute extraction. 
+\section{Algorithmes cryptographiques}
+ \colorbox{pink}{\parbox{15cm}{à voir si utile}}
+\section{L'importance d'une forte sécurité}
+\colorbox{pink}{\parbox{15cm}{à voir si utile}}

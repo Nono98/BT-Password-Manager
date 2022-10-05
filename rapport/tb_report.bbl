@@ -47,6 +47,11 @@ Jingxin~Hong Hengwei~Zhang and Jun Hu.
 ISE.
 \newblock Password managers: Under the hood of secrets management, 2019.
 
+\bibitem{ISO27005}
+{Technologies de l'information — Techniques de sécurité — Gestion des
+  risques liés à la sécurité de l'information}.
+\newblock Standard, International Organization for Standardization, July 2018.
+
 \bibitem{keepasssecurity}
 KeePass.
 \newblock Security, 2022.
@@ -70,6 +75,10 @@ lgg.
 \bibitem{MSPM22}
 Paulius Masiliauskas.
 \newblock Most secure password managers in 2022, 2022.
+
+\bibitem{owasp}
+Larry~Conklin (OWASP).
+\newblock Threat modeling process, 2022.
 
 \bibitem{padlocsecurity}
 Padloc.

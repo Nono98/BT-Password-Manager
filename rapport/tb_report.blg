@@ -47,45 +47,48 @@ Warning--entry type for "keepassstruct" isn't style-file defined
 --line 165 of file chapters/biblio.bib
 Warning--entry type for "iseexploit" isn't style-file defined
 --line 182 of file chapters/biblio.bib
-You've used 23 entries,
+Warning--entry type for "owasp" isn't style-file defined
+--line 201 of file chapters/biblio.bib
+Warning--empty author in ISO27005
+You've used 25 entries,
             2118 wiz_defined-function locations,
-            585 strings with 5586 characters,
-and the built_in function-call counts, 4910 in all, are:
-= -- 433
-> -- 178
+            594 strings with 5847 characters,
+and the built_in function-call counts, 5264 in all, are:
+= -- 467
+> -- 186
 < -- 1
-+ -- 75
-- -- 52
-* -- 177
-:= -- 802
-add.period$ -- 48
-call.type$ -- 23
-change.case$ -- 95
++ -- 79
+- -- 54
+* -- 194
+:= -- 857
+add.period$ -- 52
+call.type$ -- 25
+change.case$ -- 104
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 176
-empty$ -- 521
-format.name$ -- 52
-if$ -- 1070
+cite$ -- 26
+duplicate$ -- 191
+empty$ -- 559
+format.name$ -- 54
+if$ -- 1147
 int.to.chr$ -- 0
-int.to.str$ -- 23
+int.to.str$ -- 25
 missing$ -- 2
-newline$ -- 97
-num.names$ -- 46
-pop$ -- 197
+newline$ -- 105
+num.names$ -- 48
+pop$ -- 209
 preamble$ -- 1
-purify$ -- 72
+purify$ -- 78
 quote$ -- 0
-skip$ -- 193
+skip$ -- 206
 stack$ -- 0
-substring$ -- 165
-swap$ -- 30
+substring$ -- 175
+swap$ -- 31
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 92
-warning$ -- 0
-while$ -- 49
-width$ -- 25
-write$ -- 191
-(There were 22 warnings)
+type$ -- 100
+warning$ -- 1
+while$ -- 51
+width$ -- 27
+write$ -- 208
+(There were 24 warnings)
