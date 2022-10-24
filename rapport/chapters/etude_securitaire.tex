@@ -6,11 +6,11 @@
 \chapter{Étude sécuritaire}
 \label{ch:etude_secu}
 
-Ce chapitre est dédié à toute l'analyse sécuritaire des gestionnaires de mots de passes en général. Nous allons dans un premier temps décrire comment ces applications sont sécurisées en fonction de leur type, puis justifier l'importance d'une forte sécurité suite à l'augmentation de la demande des entreprises et des particuliers.
+Ce chapitre est dédié à toute l'analyse sécuritaire des gestionnaires de mots de passes en général. Nous allons dans un premier temps décrire comment ces applications sont sécurisées en fonction de leur type, puis présenter les différents algorithmes utilisés dans les candidats sélectionnés
 
 \section{Implémentation de la sécurité dans les gestionnaires de mots de passe}
 
-Dans cette section, afin de se baser sur des gestionnaires de mots de passe déjà existants et de pouvoir comparer les différentes sécurités implémentées, nous allons reprendre les 9 candidats sélectionnés dans la partie \hyperref[ch:etude_marche]{\textit{étude de marché}}, c'est-à-dire; \textit{LastPass}, \textit{Dashlane}, \textit{1Password}, \textit{KeePass}, \textit{Bitwarden}, \textit{NordPass}, \textit{Padloc}, \textit{Keeper} et \textit{Firefox}. Toutes les informations citées sont basées sur les \textit{security whitepapers} des constructeurs\cite{lastpasssecurity}\cite{dashlanesecurity}\cite{1passwordsecurity}\cite{keepasssecurity}\cite{bitwardensecurity}\cite{padlocsecurity}\cite{keepersecurity}.
+Dans cette section, afin de se baser sur des gestionnaires de mots de passe déjà existants et de pouvoir comparer les différentes sécurités implémentées, nous allons reprendre les 9 candidats sélectionnés dans la partie \hyperref[ch:etude_marche]{\textit{étude de marché}}, c'est-à-dire; \textit{LastPass}, \textit{Dashlane}, \textit{1Password}, \textit{KeePass}, \textit{Bitwarden}, \textit{NordPass}, \textit{Padloc}, \textit{Keeper} et \textit{Firefox}. Toutes les informations citées sont basées sur les \textit{security whitepapers} des constructeurs\cite{lastpasssecurity}\cite{dashlanesecurity}\cite{1passwordsecurity}\cite{keepasssecurity}\cite{bitwardensecurity}\cite{padlocsecurity}\cite{keepersecurity}\cite{nordpasssecurity}.
 
 Les gestionnaires de mots de passe sélectionnés fonctionnent tous de la même manière, au final cette méthode est plutôt classique dans les architectures des applications. Un \textit{master password} (qui est seulement connu par l'utilisateur) est généré ou entré par l'utilisateur et va permettre le déverrouillage de l'application et le chiffrement / déchiffrement en local de toutes les données stockées. 
 
@@ -30,7 +30,7 @@ Il propose également la fonctionnalité d'ajouter un master password afin d'avo
 Au niveau du fonctionnement\cite{firefoxEncr} (sans master password), les identifiants sont chiffrés à l'aide de 3DES-CBC et sont directement stockés dans un fichier JSON \textit{logins.json} encodés en ASN.1 puis en Base64. La clé de chiffrement est stockée dans une base de donnée \textit{key4.db}. Il existe actuellement des outils pour déchiffrer les mots de passe du gestionnaire.
 
 Si l'option de synchronisation (\textit{Firefox Sync}) est activée\cite{firefoxsync}, les données stockées sur les serveurs Mozilla seront chiffrés. Nous pouvons se baser sur le schéma suivant qui explique le processus de synchronisation des données avec les serveurs Mozilla:
-\begin{figure}[h!]
+\begin{figure}[H]
 	\includegraphics[width=15.5cm]{images/firefox_sync.png}
 		\centering
 	\caption{Schéma de synchronisation de données sur Firefox}
@@ -72,7 +72,7 @@ Chaque output est haché avec SHA-256 et au final, on obtient la Master key qui 
 Les deux différentes seeds utilisées dans la génération de la clé sont stockées dans le header de la base de données \textit{.kdbx}.
 
 Cette architecture permet de se protéger contre les attaques par dictionnaires et le brute-force de la Master key.
-\newline\newline
+\newline\newline\newline\newline\newline
 \subsection{Les gestionnaires cloud-based}
 Les gestionnaires de mots de passes cloud-based ont tous une architecture similaire dû au fait que toutes les données sont stockées sur les serveurs du constructeur. Il y a des différences avec l'authentification de l'utilisateur et des algorithmes cryptographiques choisis, mais le design sécuritaire a la même base au niveau de la connexion de l'utilisateur et du chiffrement du gestionnaire. 
 
@@ -124,9 +124,7 @@ A chaque fois qu'un élément doit être partagé, on génère une clé symétri
 Afin de récupérer le partage, Dashlane demande à l'utilisateur d'accepter l'envoi d'Alice pour qu'il accepte d'utiliser sa clé privée. Tout dépend de l'architecture de l'application, mais cette dernière doit d'abord être déchiffrée avant d'être utilisée pour déchiffrer l'identifiant envoyé par Alice.
 
 Certains gestionnaires proposent de faire des répertoires partagés. Dans le cadre d'entreprises, cela est une fonctionnalité très utile. Le processus est le même que pour le partage avec une personne. Une clé pour le dossier à partager est générée et on chiffre chaque clé publique de tous les utilisateurs concernés à l'aide de cette dernière.
-\section{Perte du master password}
-\colorbox{pink}{\parbox{15cm}{à voir si utile}}
-\section{3 états du gestionnaire de mot de passe}
+\section{3 états du gestionnaire de mot de passe \label{etats}}
 Les gestionnaires de mots de passe ont généralement 3 états différents, \textit{Not Running}, \textit{Unlocked State} et \textit{Locked State}. Nous allons expliquer plus en détails comment ils fonctionnent lorsqu'ils sont dans les différents états. Nous nous basons sur un article qui analyse le management des secrets\cite{iseexploit}.
 \subsection{Etat \textit{Not Running}}
 C'est l'état du password manager lorsqu'il n'a jamais été utilisé et configuré après son installation. On définit également cet état s'il n'a pas été lancé depuis le dernier redémarrage du système ou a été arrêté par un utilisateur. Dans cet état, le gestionnaire doit garantir qu'il n'y a aucune donnée sensible stockée sur le disque, comme une clé de chiffrement ou le master password.
@@ -135,6 +133,24 @@ Cet état indique que le gestionnaire fonctionne et donc, l'utilisateur a entré
 \subsection{Etat \textit{Locked State}}
 Nous considérons cet état lorsque l'utilisateur a lancé le gestionnaire (déjà configuré) sans avoir encore entré le master password ou qu'il a lui même verrouiller son gestionnaire. À ce moment, il ne devrait pas y avoir de données sensibles stockées sur le disque afin d'éviter toute extraction. 
 \section{Algorithmes cryptographiques}
- \colorbox{pink}{\parbox{15cm}{à voir si utile}}
-\section{L'importance d'une forte sécurité}
-\colorbox{pink}{\parbox{15cm}{à voir si utile}}
+Afin d'avoir une bonne vue d'ensemble de l'architecure sécuritaire des gestionnaires de mots de passe sélectionnés pour notre étude, nous allons résumer les algorithmes cryptographiques utilisés pour le chiffrement des données, la dérivation des clés et l'authentification.
+
+\begin{table}[H]
+	\centering
+\begin{tabular}{|l|c|cc|}
+				\hline
+				& Chiffrement des données & \multicolumn{2}{l|}{Dérivation des clés}                                                                                                                         \\ \hline
+				LastPass  & AES-CBC 256             & \multicolumn{1}{c|}{Argon2d} & \begin{tabular}[c]{@{}l@{}}PBKDF2-SHA2\\ 100'100 rounds\end{tabular}  \\ \hline
+				Dashlane  & AES-256                 & \multicolumn{1}{c|}{Argon2d} & \begin{tabular}[c]{@{}l@{}}PBKDF2-SHA2\\ 200'000 rounds\end{tabular}  \\ \hline
+				1Password & AES-GCM 256             & \multicolumn{2}{c|}{\begin{tabular}[c]{@{}l@{}}PBKDF2-SHA2\\ 100'000 rounds\end{tabular}}        \\ \hline
+				KeePass   & AES-CBC 256 ou ChaCha20 & \multicolumn{1}{c|}{AES-KDF} & Argon2                                                                \\ \hline
+				Bitwarden & AES-CBC 256             & \multicolumn{2}{c|}{\begin{tabular}[c]{@{}l@{}}PBKDF2-SHA2\\ 100'000 rounds\end{tabular}}          \\ \hline
+				NordPass  & XChaCha20-Poly1305-IETF               & \multicolumn{2}{c|}{Argon2id}                                                                        \\ \hline
+				Padloc    & AES-GCM 256             & \multicolumn{2}{c|}{PBKDF2-SHA2}                                                                   \\ \hline
+				Keeper    & AES-256                 & \multicolumn{2}{c|}{PBKDF2}                                                  \\ \hline
+				Firefox   & AES-CBC ou 3DES-CBC                & \multicolumn{2}{c|}{\begin{tabular}[c]{@{}l@{}}PBKDF2-SHA2 et HKDF\\ 1000 rounds\end{tabular}}                                                                  \\ \hline
+			\end{tabular}
+	\caption{Algorithmes cryptographiques utilisés dans les gestionnaires\label{crypto}}
+\end{table}
+
+Nous pouvons remarquer que certains gestionnaire ont plusieurs algorithmes différents pour le même élément, ceci est dû au fait que l'utilisateur a le choix de configurer celui qu'il préfère et que l'application supporte les deux.
