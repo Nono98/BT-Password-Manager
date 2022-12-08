@@ -1,0 +1,94 @@
+% +---------------------------------------------------------------+
+% | Author :    Noémie Plancherel, HEIG-VD
+% | Date :      November 1st, 2022
+% +---------------------------------------------------------------+
+
+\chapter{Informations préliminaires}
+\label{ch:informations}
+
+Avant d'effectuer l'étude sécuritaire des gestionnaires de mots de passe, nous allons dédier un chapitre bref à l'explication de quelques notions de sécurité à propos des mots de passe. 
+
+\section{Attaques sur mot de passe}
+
+Nous pouvons premièrement nous concentrer sur les différentes attaques qu'il est possible de faire sur des mots de passe afin de motiver l'utilisation d'un unique mot de passe par service et d'en créer un fort. 
+
+Une attaque populaire est le \textbf{brute force}. Cette dernière vise à tester x mots de passe différents avant de trouver le bon. 
+
+L'attaquant va tester systématiquement toutes les combinaisons possibles avec des lettres, chiffre et symboles. Le temps que va prendre l'attaque dépend de la complexité du mot de passe, c'est-à-dire le nombre de caractères. Plus le mot de passe est complexe, plus cela prendra du temps pour le brute forcer. Le nombre de temps de craquage peut aller de 2 secondes à des milliers d'années. Un outil connu pour cette attaque est Hashcat par exemple.
+
+Une attaque également populaire est \textbf{l'attaque par dictionnaire}. Elle consiste à tester systématiquement chaque mot d'un dictionnaire en un mot de passe. L'attaquant sélectionne un fichier avec des milliers de mots du dictionnaire communs ou de mots populaires (comme par exemple des célébrités) et tente de trouver le mot de passe en testant chaque mot. 
+
+Cette attaque peut réussir si l'utilisateur utilise des mots communs comme par exemple "password" ou "iloveyou". 
+
+Comme attaque, nous pouvons également citer les \textbf{attaques \textit{Rainbow Tables}}. Cette dernière permet de craquer les hashs des mots de passe qui sont stockés dans la base de données. Certaines applications ne stockent pas les mots de passe en clair mais à la place, elle les stocke en les chiffrant avec des hashs. Ainsi, la rainbow table fait référence à une table pré-calculée qui contient la valeur du hash du mot de passe pour chaque caractère en clair.
+
+Cependant, dans les architectures modernes des applications, cette attaque n'est plus très efficace car la majorité utilisent un sel, qui est une valeur aléatoire, afin de stocker plus sûrement des mots de passe dans une base de données.
+
+Finalement, nous pouvons citer l'attaque \textbf{Man-in-the-Middle} (MITM) qui pourrait permettre à un attaquant de se mettre entre l'utilisateur et le serveur et d'intercepter le mot de passe via le trafic.
+\section{Complexités}
+
+En prenant en compte les attaques sur mots de passe existantes, il est ainsi important de prendre des mesures afin d'éviter au maximum ces attaques. La mesure la plus importante est d'avoir un mot de passe complexe. Cela ne va pas stopper à 100\% les attaques mais cela va venir les freiner, car plus le mot de passe est complexe et moins prévisible, plus l'attaque prendra du temps. En définition, la complexité d'un mot de passe est en fonction du nombre de types de caractères différents (chiffres, symboles, lettres), du nombre de caractères et de la variation des lettres (majuscule, minuscule). Afin de mettre en place de la complexité dans les mots de passe, il est nécessaire d'implémenter dans les applications des critères strictes lors de la création de mots de passe. 
+
+En se référant à l'étude de Hive Systems en 2022 \cite{hives}, nous pouvons voir en fonction des critères de complexité combien de temos cela prend pour le brute forcer:
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		{\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Nombre de \\ caractères\end{tabular}} & {\color[HTML]{000000} Nombres}                                                     & {\color[HTML]{000000} Minuscules}                                                  & {\color[HTML]{000000} Majuscules}                               & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Chiffres, Minuscules, \\ Majuscules\end{tabular}} & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Chiffres, Minuscules, \\ Majuscules, Symboles\end{tabular}} \\ \hline
+		{\color[HTML]{000000} 4}                                                               & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                      & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                      & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}   & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                                      & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                                                \\ \hline
+		{\color[HTML]{000000} 5}                                                               & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                      & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                      & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}   & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                                      & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                                                \\ \hline
+		{\color[HTML]{000000} 6}                                                               & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                      & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                      & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}   & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                                      & \cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}                                                \\ \hline
+		{\color[HTML]{000000} 7}                                                               & \multicolumn{1}{l|}{\cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}} & \multicolumn{1}{l|}{\cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}} & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 2s}               & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 7s}                                                  & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 31s}                                                           \\ \hline
+		{\color[HTML]{000000} 8}                                                               & \multicolumn{1}{l|}{\cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}} & \multicolumn{1}{l|}{\cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}} & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 2min}             & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 7min}                                                & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 39min}                                                         \\ \hline
+		{\color[HTML]{000000} 9}                                                               & \multicolumn{1}{l|}{\cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}} & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 10s}                                 & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 1h}               & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 7h}                                                  & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 2 jours}                                                       \\ \hline
+		{\color[HTML]{000000} 10}                                                              & \multicolumn{1}{l|}{\cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}} & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 4min}                                & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 3 jours}          & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 3 semaines}                                          & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 5 mois}                                                        \\ \hline
+		{\color[HTML]{000000} 11}                                                              & \multicolumn{1}{l|}{\cellcolor[HTML]{83549B}{\color[HTML]{000000} Instantanément}} & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 2h}                                  & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 5 mois}           & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 3 ans}                                               & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 34 ans}                                                        \\ \hline
+		{\color[HTML]{000000} 12}                                                              & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 2s}                                  & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 2 jours}                             & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 24 ans}           & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 200 ans}                                             & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 3'000 ans}                                                     \\ \hline
+		{\color[HTML]{000000} 13}                                                              & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 19s}                                 & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 2 mois}                              & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 1'000 ans}        & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 12'000 ans}                                          & \cellcolor[HTML]{F1B744}{\color[HTML]{000000} 202'000 ans}                                                   \\ \hline
+		{\color[HTML]{000000} 14}                                                              & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 3min}                                & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 4 ans}                               & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 64'000 ans}       & \cellcolor[HTML]{F1B744}{\color[HTML]{000000} 750'000 ans}                                         & \cellcolor[HTML]{F1B744}{\color[HTML]{000000} 16 millions ans}                                               \\ \hline
+		{\color[HTML]{000000} 15}                                                              & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 32min}                               & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 100 ans}                             & \cellcolor[HTML]{F1B744}{\color[HTML]{000000} 3 millions ans}   & \cellcolor[HTML]{F1B744}{\color[HTML]{000000} 46 millions ans}                                     & \cellcolor[HTML]{F1B744}{\color[HTML]{000000} 1 billions ans}                                                \\ \hline
+		{\color[HTML]{000000} 16}                                                              & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 5h}                                  & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 3'000 ans}                           & \cellcolor[HTML]{F1B744}{\color[HTML]{000000} 173 millions ans} & \cellcolor[HTML]{F1B744}{\color[HTML]{000000} 3 billions ans}                                      & \cellcolor[HTML]{4FA859}{\color[HTML]{000000} 92 billions ans}                                               \\ \hline
+		{\color[HTML]{000000} 17}                                                              & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 2 jours}                             & \cellcolor[HTML]{E4893C}{\color[HTML]{000000} 69'000 ans}                          & \cellcolor[HTML]{F1B744}{\color[HTML]{000000} 9 billions ans}   & \cellcolor[HTML]{4FA859}{\color[HTML]{000000} 179 billions ans}                                    & \cellcolor[HTML]{4FA859}{\color[HTML]{000000} 7 trillions ans}                                               \\ \hline
+		{\color[HTML]{000000} 18}                                                              & \cellcolor[HTML]{C7333A}{\color[HTML]{000000} 3 semaines}                          & \cellcolor[HTML]{F1B744}{\color[HTML]{000000} 2 millions ans}                      & \cellcolor[HTML]{4FA859}{\color[HTML]{000000} 467 billions ans} & \cellcolor[HTML]{4FA859}{\color[HTML]{000000} 11 trillions années}                                 & \cellcolor[HTML]{4FA859}{\color[HTML]{000000} 438 trillions ans}                                             \\ \hline
+	\end{tabular}}
+\caption{Temps pour craquer les mots de passe en fonction des critères \label{hives}}
+\end{table}
+
+Ainsi, nous pouvons constater que la norme de 8 caractères, voire 6, qui est appliquée sur beaucoup d'applications en 2022 n'est plus assez résistante aux attaques de brute force. Les critères sont acceptables à partir des cellules en orange. 
+
+\subsection{Entropie}
+\label{entropie}
+D'après Okta\cite{okta}, "L'entropie du mot de passe est une mesure de l'imprévisibilité, et donc de l'impossibilité de deviner, d'un mot de passe.". L'entropie mesure la probabilité que des attaques sur mots de passe (brute-force par exemple) fonctionnent et que l'attaquant puisse entrer dans le service. Elle permet ainsi d'évaluer sa force et sa complexité.
+
+Il existe une formule qui permet de calculer l'entropie d'un mot de passe. Plus l'entropie est grande, plus le mot de passe est fort et imprévisible.
+
+\begin{center}
+	$E = log_2(R^{L})$
+\end{center}
+
+\begin{itemize}
+	\item R : le nombre possibles de caractères dans le mot de passe, par exemple pour les chiffres, ce serait 10 ([0-9])
+	\item L : le nombre de caractère dans le mot de passe
+\end{itemize}
+
+Ainsi, en se basant sur le tableau \ref{hives} et sur une échelle proposée sur ce site \cite{medium}, nous pouvons définir l'échelle suivante en fonction du nombre de bits d'entropie:
+
+\begin{enumerate}
+	\item < 25: mot de passe très faible
+	\item < 50: mot de passe faible
+	\item < 75: mot de passe raisonnable
+	\item < 100: mot de passe fort
+	\item >= 100: mot de passe très fort
+\end{enumerate}
+
+\section{2FA}
+
+Un autre point intéressant à aborder est l'authentification à double facteurs (2FA) ou l'authentification à multi-facteurs (MFA) qui permet d'ajouter une couche sécuritaire supplémentaire au mot de passe. Ces derniers consistent à ajouter un facteur supplémentaire en plus d'un simple mot de passe lors de la connexion d'un utilisateur à un service. Une liste non-exhaustive de quelques solutions disponibles:
+
+\begin{itemize}
+	\item Facteurs biométriques (empreintes digitales, reconnaissance faciale)
+	\item Code par SMS ou e-mail
+	\item Tokens (YubiKey)
+	\item One-time password (OTP)
+\end{itemize}

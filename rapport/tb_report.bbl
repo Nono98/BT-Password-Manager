@@ -8,6 +8,17 @@
 Apr4h.
 \newblock Decrypting browser credentials for fun (but not profit), 2019.
 
+\bibitem{SP80090A}
+Elaine Barker and John Kelsey.
+\newblock Recommendation for random number generation using deterministic
+  random bit generators.
+\newblock Technical Report NIST Special Publication (SP) 800-90A Rev. 1,
+  National Institute of Standards and Technology, Gaithersburg, MD, 2015.
+
+\bibitem{p59}
+Derk Barten.
+\newblock "client-side attacks on the lastpass browser extension", 2019.
+
 \bibitem{bitwardensecurity}
 bitwarden.
 \newblock Bitwarden security whitepaper, 2022.
@@ -16,9 +27,29 @@ bitwarden.
 bitwarden.
 \newblock World password day global survey full report, 2022.
 
+\bibitem{carr}
+Michael Carr and Siamak~F. Shahandashti.
+\newblock "revisiting security vulnerabilities in commercial password
+  managers", 2020.
+
+\bibitem{firepwd}
+Laurent Clévy.
+\newblock "firepwd.py, an open source tool to decrypt mozilla protected
+  passwords", 2020.
+
 \bibitem{BPM22}
 Clifford Colby, Rae Hodge, and Attila Tomaschek.
 \newblock Best password manager to use for 2022, 2022.
+
+\bibitem{leo}
+Léo Corthès.
+\newblock "analyse forensique de la ram macos - extraction de clés de
+  chiffrement", 2019.
+
+\bibitem{random}
+cr.yp.to.
+\newblock "fast-key-erasure random-number generators: An effort to clean up
+  several messes simultaneously", 2017.
 
 \bibitem{dashlanesecurity}
 Dashlane.
@@ -37,6 +68,14 @@ Elizabeth~A. Gallagher.
 Eric Griffith.
 \newblock How to master google password manager, 2022.
 
+\bibitem{crack}
+harmj0y.
+\newblock "a case study in attacking keepass", 2016.
+
+\bibitem{restore_dpapi}
+harmj0y.
+\newblock "restore-userdpapi.ps1", 2016.
+
 \bibitem{keepassieee}
 Jingxin~Hong Hengwei~Zhang and Jun Hu.
 \newblock Analysis of encryption mechanism in keepass password safe 2.30.
@@ -48,9 +87,13 @@ ISE.
 \newblock Password managers: Under the hood of secrets management, 2019.
 
 \bibitem{ISO27005}
-{Technologies de l'information — Techniques de sécurité — Gestion des
-  risques liés à la sécurité de l'information}.
+{Technologies de l'information - Techniques de sécurité - Gestion des risques
+  liés à la sécurité de l'information}.
 \newblock Standard, International Organization for Standardization, July 2018.
+
+\bibitem{kp4}
+KeePass.
+\newblock "kdbx 4", 2017.
 
 \bibitem{keepasssecurity}
 KeePass.
@@ -72,13 +115,42 @@ LastPass.
 lgg.
 \newblock Keepass file format explained, 2017.
 
+\bibitem{youn}
+Blanchou Marc and Youn Paul.
+\newblock "password manager: Exposing password everywhere", 2013.
+
 \bibitem{MSPM22}
 Paulius Masiliauskas.
 \newblock Most secure password managers in 2022, 2022.
 
+\bibitem{197243}
+William Melicher, Blase Ur, Sean~M. Segreti, Saranga Komanduri, Lujo Bauer,
+  Nicolas Christin, and Lorrie~Faith Cranor.
+\newblock Fast, lean, and accurate: Modeling password guessability using neural
+  networks.
+\newblock In {\em 25th USENIX Security Symposium (USENIX Security 16)}, pages
+  175--191, Austin, TX, August 2016. USENIX Association.
+
+\bibitem{medium}
+Leo N.
+\newblock Idiomatic cryptography: Pbkdf2, sha, aes, 2022.
+
 \bibitem{nordpasssecurity}
 NordPass.
-\newblock Nordpass business whitepaper, 2022.
+\newblock "nordpass business whitepaper", 2022.
+
+\bibitem{oesch}
+Timothy Oesch.
+\newblock "an analysis of modern password manager security and usage on desktop
+  and mobile devices.", 2021.
+
+\bibitem{okta}
+Okta.
+\newblock "password entropy: The value of unpredictable passwords", 2021.
+
+\bibitem{ASVS}
+OWASP.
+\newblock {\em Application Security Verification Standard 4.0.3}, 2021.
 
 \bibitem{owasp}
 Larry~Conklin (OWASP).
@@ -92,9 +164,30 @@ Padloc.
 PasswordManager.
 \newblock Password manager trust survey, 2020.
 
+\bibitem{kdbx}
+Dominik Reichl.
+\newblock "kdbx 4", 2017.
+
+\bibitem{pw}
+Dominik Reichl.
+\newblock "password generator", 2022.
+
+\bibitem{kp_memory}
+Dominik Reichl.
+\newblock "process memory protection", 2022.
+
 \bibitem{firefoxsync}
 Tom Ritter.
 \newblock Private by design: How we built firefox sync, 2018.
+
+\bibitem{zhao}
+Chuan~Yue Rui~Zhao and Kun Sun.
+\newblock "security analysis of two commercial browser and cloud based password
+  managers", 2013.
+
+\bibitem{hives}
+Hives Systems.
+\newblock Are your password in the green, 2022.
 
 \bibitem{PM21}
 Security.org Team.
@@ -108,5 +201,27 @@ Verizon.
 \bibitem{Browser}
 Liz Wegerer.
 \newblock Is your browser’s password manager safe?, 2022.
+
+\bibitem{197177}
+Daniel~Lowe Wheeler.
+\newblock zxcvbn: {Low-Budget} password strength estimation.
+\newblock In {\em 25th USENIX Security Symposium (USENIX Security 16)}, pages
+  157--173, Austin, TX, August 2016. USENIX Association.
+
+\bibitem{dpapi}
+Wikipedia.
+\newblock "data protection api", 2022.
+
+\bibitem{matrix}
+Richard Wood.
+\newblock "what’s the difference between qualitative and quantitative risk
+  analysis?", 2019.
+
+\bibitem{9657969}
+Fei Yu and Hao Yin.
+\newblock A security analysis of the authentication mechanism of password
+  managers.
+\newblock In {\em 2021 IEEE 21st International Conference on Communication
+  Technology (ICCT)}, pages 865--869, 2021.
 
 \end{thebibliography}
